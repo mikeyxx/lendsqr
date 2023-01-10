@@ -1,0 +1,56 @@
+$primary: #39cdcc;
+$secondary: #213f7d;
+$tertiary: #545f7d;
+$blacklisted: #e4033b;
+$inactive: #545f7d;
+$pending: #e9b200;
+$active: #39cd62;
+
+// Avenir Bold
+@font-face {
+  font-family: "Avenir Next Bold";
+  src: local("Avenir Next Bold"),
+    url("../fonts/AvenirNext-Bold.ttf") format("truetype");
+}
+
+// Avenir Demi Bold
+@font-face {
+  font-family: "Avenir Next Demi Bold";
+  src: local("Avenir Next Demi Bold"),
+    url("../fonts/AvenirNext-DemiBold.ttf") format("truetype");
+}
+
+// Avenir Regular
+@font-face {
+  font-family: "Avenir Next Regular";
+  src: local("Avenir Next Regular"),
+    url("../fonts/AvenirNext-Regular.ttf") format("truetype");
+}
+
+// SF Compact Regular
+@font-face {
+  font-family: "SF Compact Regular";
+  src: local("SF Compact Regular"),
+    url("../fonts/SF-Compact-Text-Regular.ttf") format("truetype");
+}
+
+// Work Sans Medium
+@font-face {
+  font-family: "Work Sans Medium";
+  src: local("Work Sans Medium"),
+    url("../fonts/WorkSans-Medium.ttf") format("truetype");
+}
+
+// Work Sans Regular
+@font-face {
+  font-family: "Work Sans Regular";
+  src: local("Work Sans Regular"),
+    url("../fonts/WorkSans-Regular.ttf") format("truetype");
+}
+
+// Work Sans SemiBold
+@font-face {
+  font-family: "Work Sans SemiBold";
+  src: local("Work Sans SemiBold"),
+    url("../fonts/WorkSans-SemiBold.ttf") format("truetype");
+}

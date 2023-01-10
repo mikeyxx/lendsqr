@@ -1,0 +1,72 @@
+@use "base";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.left {
+  width: 50%;
+  height: 100%;
+  border: 2px solid base.$primary;
+  background-color: rgb(252, 250, 250);
+  position: relative;
+}
+
+.groupImg {
+  position: absolute;
+  top: 106px;
+  left: 97px;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.pabloImg {
+  position: absolute;
+  top: 281px;
+  left: 67px;
+  margin-left: 67px;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.right {
+  width: 50%;
+  border: 2px solid base.$primary;
+
+  .formWrapper {
+    height: 100vh;
+    width: 447px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // border: 2px solid base.$primary;
+
+    header {
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  h1 {
+    font-family: "Avenir Next Bold";
+  }
+
+  .form {
+    width: 100%;
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
