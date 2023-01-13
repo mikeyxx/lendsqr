@@ -1,25 +1,67 @@
 @use "base";
 
 .wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100vh;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px 10px;
   overflow: hidden;
+  transition: all 0.3s;
 }
 
-.left {
-  width: 50%;
-  height: 100%;
-  border: 2px solid base.$primary;
-  background-color: rgb(252, 250, 250);
-  position: relative;
+@media (min-width: 600px) {
+  .wrapper {
+    max-width: 760px;
+  }
+}
+
+@media (min-width: 920px) {
+  .wrapper {
+    max-width: calc(100vw - 97px);
+    height: 100vh;
+    display: flex;
+    gap: 10px;
+  }
+
+  .left {
+    padding-top: 106px;
+  }
+
+  .pabloImg {
+    padding-top: 139px;
+    img {
+      max-width: 600px;
+      width: 100%;
+      height: 337.57px;
+    }
+  }
+
+  .right {
+    max-width: 670px;
+    width: 100%;
+    margin-top: 220px;
+
+    .formWrapper {
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+  }
+}
+
+@media (min-width: 1150px) {
+  .wrapper {
+    gap: 69px;
+  }
+
+  .right {
+    .formWrapper {
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+  }
 }
 
 .groupImg {
-  position: absolute;
-  top: 106px;
-  left: 97px;
+  padding-top: 20px;
 
   img {
     object-fit: cover;
@@ -27,46 +69,101 @@
 }
 
 .pabloImg {
-  position: absolute;
-  top: 281px;
-  left: 67px;
-  margin-left: 67px;
+  width: 100%;
+  margin: 30px auto;
 
   img {
     object-fit: cover;
+    max-width: 400px;
+    width: 390px;
+    height: 210px;
+  }
+}
+
+@media (min-width: 600px) {
+  .pabloImg {
+    img {
+      max-width: 600px;
+      width: 560px;
+    }
   }
 }
 
 .right {
-  width: 50%;
-  border: 2px solid base.$primary;
-
   .formWrapper {
-    height: 100vh;
-    width: 447px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    // border: 2px solid base.$primary;
-
     header {
-      width: 100%;
-      text-align: left;
+      // width: 100%;
+      // text-align: left;
+      h1 {
+        font-family: "Avenir Next Bold";
+        font-size: 40px;
+        color: base.$secondary;
+        transition: font-size 0.3s;
+        line-height: 55px;
+      }
+      p {
+        font-family: "Avenir Next Regular";
+        transition: font-size 0.3s;
+        font-size: 20px;
+        color: base.$tertiary;
+        margin-top: 10px;
+      }
     }
-  }
 
-  h1 {
-    font-family: "Avenir Next Bold";
-  }
-
-  .form {
-    width: 100%;
-
-    form {
+    .form {
       display: flex;
       flex-direction: column;
+      gap: 24px;
+      margin-top: 30px;
+
+      input {
+        background: #ffffff;
+        border: 2px solid rgba(84, 95, 125, 0.15);
+        border-radius: 5px;
+        font-family: "Avenir Next Regular";
+        font-size: 14px;
+        padding: 13px;
+      }
+
+      input:focus {
+        outline-color: base.$secondary;
+      }
+      .forgot-password {
+        font-family: "Avenir Next Demi Bold";
+        font-size: 12px;
+        color: base.$primary;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      .submit-btn {
+        border-radius: 8px;
+        color: #fff;
+        text-transform: uppercase;
+        display: inline-block;
+        font-size: 14px;
+        font-family: "Avenir Next Demi Bold";
+        padding: 13px;
+      }
+
+      .submit-btn.filled {
+        background-color: base.$primary;
+      }
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .right {
+    .formWrapper {
+      header {
+        h1 {
+          font-size: 40px;
+        }
+        p {
+          font-size: 20px;
+        }
+      }
     }
   }
 }

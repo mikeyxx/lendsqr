@@ -1,0 +1,92 @@
+@use "base";
+
+.userInfoFilterContainer {
+  h2 {
+    font-family: "Work Sans Medium";
+    font-size: 24px;
+    color: base.$secondary;
+  }
+}
+
+//form
+.filter-wrapper {
+  .field {
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+
+    input,
+    select {
+      background: #ffffff;
+      opacity: 0.2;
+      border: 1px solid #213f7d;
+      border-radius: 8px;
+      padding: 12px 20px;
+    }
+  }
+}
+
+.label {
+  font-family: "Work Sans Medium";
+  font-size: 14px;
+  color: base.$tertiary;
+}
+
+// Button styles
+
+.reset-btn {
+  border: 1px solid base.$secondary;
+  border-radius: 8px;
+  font-family: "Work Sans SemiBold";
+  font-size: 14px;
+}
+
+.filter-btn {
+  background: base.$primary;
+  border: 1px solid base.$primary;
+  border-radius: 8px;
+  font-family: "Work Sans SemiBold";
+  font-size: 14px;
+  color: #fff;
+}
+
+.three-dots-wrapper {
+  background: #ffffff;
+  border: 1px solid rgba(84, 95, 125, 0.04);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  width: 180px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+
+  .action {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    span {
+      font-family: "Work Sans Medium";
+      font-size: 14px;
+      color: base.$tertiary;
+    }
+
+    .view {
+      width: 15.1px;
+      height: 9.73px;
+    }
+
+    .karma {
+      width: 11px;
+      height: 13.13px;
+    }
+
+    .activate {
+      width: 12.57px;
+      height: 12.59px;
+    }
+  }
+}

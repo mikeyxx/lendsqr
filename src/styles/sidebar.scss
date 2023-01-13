@@ -1,0 +1,71 @@
+@use "base";
+
+.sidebarContainer {
+  position: relative;
+}
+
+.sidebar-wrapper {
+  padding-left: 29px;
+  background: #ffffff;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  max-width: 400px;
+  width: 283px;
+  min-height: 100vh;
+  margin: 0 auto;
+  transition: all 0.3s;
+  position: absolute;
+  right: 0;
+  transition: all 0.3s;
+  transform: translateX(100%);
+}
+
+.sidebar-wrapper.toggle {
+  transform: translateX(0);
+}
+
+.switch-Organization {
+  display: flex;
+  gap: 10px;
+  padding-top: 29px;
+  margin-bottom: 52px;
+  color: base.$secondary;
+  font-family: "Work Sans Regular";
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dash {
+  display: flex;
+  gap: 10px;
+  font-family: "Work Sans Regular";
+  font-size: 16px;
+  margin-bottom: 41px;
+
+  color: base.$secondary;
+  cursor: pointer;
+}
+
+.cat {
+  h4 {
+    font-family: "Work Sans Medium";
+    font-size: 12px;
+    text-transform: uppercase;
+    color: base.$secondary;
+    margin-bottom: 10px;
+  }
+}
+
+.logout-wrapper {
+  font-size: 16px;
+  color: #213f7d;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  margin-bottom: 31px;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #213f7d;
+  cursor: pointer;
+}

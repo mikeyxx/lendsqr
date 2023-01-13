@@ -2,6 +2,7 @@ import back from "../assets/back.svg";
 import placeholder from "../assets/placeholder.svg";
 import filledStar from "../assets/filled-star.svg";
 import unfilledStar from "../assets/unfilled-star.svg";
+import "../styles/details.scss";
 
 const UserInformation = () => {
   return (
@@ -15,8 +16,8 @@ const UserInformation = () => {
           <div className="head">
             <h2>User Details</h2>
             <div className="user-action">
-              <button className="action-btn light">Blacklist User</button>
-              <button className="action-btn filled">Activate User</button>
+              <button className="blacklist-btn light">Blacklist User</button>
+              <button className="activate-btn light">Activate User</button>
             </div>
           </div>
           <div className="user-info-menu">
@@ -38,7 +39,7 @@ const UserInformation = () => {
               <small>7868764378/Providus Bank</small>
             </div>
           </div>
-          <nav>
+          <nav className="details-menu">
             <ul>
               <li>General Details</li>
               <li>Documents</li>
@@ -51,142 +52,143 @@ const UserInformation = () => {
         </header>
 
         <section>
-          <div className="section-one">
+          <div className="section-one categories">
             <h4>Personal Information</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Full Name</th>
-                  <th>Phone Number</th>
-                  <th>Email Address</th>
-                  <th>BVN</th>
-                  <th>Gender</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Grace Effiom</td>
-                  <td>07060780922</td>
-                  <td>grace@gmail.com</td>
-                  <td>223787632395</td>
-                  <td>Female</td>
-                </tr>
-              </tbody>
-              <thead>
-                <tr>
-                  <th>Marital Status</th>
-                  <th>Children</th>
-                  <th>Type of Residence</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Single</td>
-                  <td>None</td>
-                  <td>Parent's Apartment</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="section-one-container">
+              <div className="section-one-wrapper-first">
+                <div className="inner-p">
+                  <h6>Full Name</h6>
+                  <span>Grace Effiom</span>
+                </div>
+                <div className="inner-p">
+                  <h6>Phone Number</h6>
+                  <span>07060780922</span>
+                </div>
+                <div className="inner-p">
+                  <h6>Email Address</h6>
+                  <span>grace@gmail.com</span>
+                </div>
+                <div className="inner-p">
+                  <h6>BVN</h6>
+                  <span>223787632395</span>
+                </div>
+                <div className="inner-p">
+                  <h6>Gender</h6>
+                  <h6>Female</h6>
+                </div>
+              </div>
+
+              <div className="section-one-wrapper-second">
+                <div className="inner-p">
+                  <h6>Marital Status</h6>
+                  <span>Single</span>
+                </div>
+                <div className="inner-p">
+                  <h6>Children</h6>
+                  <span>None</span>
+                </div>
+                <div className="inner-p">
+                  <h6>Type of Residence</h6>
+                  <span>Parent's Apartment</span>
+                </div>
+              </div>
+            </div>
           </div>
           <hr />
-          <div className="section-two">
+          <div className="section-two categories">
             <h4>Education and Employment</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Level of Education</th>
-                  <th>Employment Status</th>
-                  <th>Sector of Employment</th>
-                  <th>Duration of Employment</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>B.Sc</td>
-                  <td>Employed</td>
-                  <td>FinTech</td>
-                  <td>2 years</td>
-                </tr>
-              </tbody>
-              <thead>
-                <tr>
-                  <th>Office Email</th>
-                  <th>Monthly Income</th>
-                  <th>Loan Repayment</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>grace@lendsqr.com</td>
-                  <td>#200,000.00 - #400,00.00</td>
-                  <td>40,000</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="section-one-container">
+              <div className="section-one-wrapper-first">
+                <div className="inner-ee">
+                  <h6>Level of Education</h6>
+                  <span>B.Sc</span>
+                </div>
+                <div className="inner-ee">
+                  <h6>Employment Status</h6>
+                  <span>Employed</span>
+                </div>
+                <div className="inner-ee">
+                  <h6>Sector of Employment</h6>
+                  <span>FinTech</span>
+                </div>
+                <div className="inner-ee">
+                  <h6>Duration of Employment</h6>
+                  <span>2 years</span>
+                </div>
+              </div>
+
+              <div className="section-one-wrapper-second">
+                <div className="inner-ee">
+                  <h6>Office Email</h6>
+                  <span>grace@lendsqr.com</span>
+                </div>
+                <div className="inner-ee">
+                  <h6>Monthly Income</h6>
+                  <span>#200,000.00 - #400,00.00</span>
+                </div>
+                <div className="inner-ee">
+                  <h6>Loan Repayment</h6>
+                  <span>40,000</span>
+                </div>
+              </div>
+            </div>
           </div>
           <hr />
-          <div className="socials">
+          <div className="socials categories">
             <h4>Social</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Twitter</th>
-                  <th>Facebook</th>
-                  <th>Instagram</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>@grace_effiom</td>
-                  <td>Grace Effiom</td>
-                  <td>@grace_effiom</td>
-                </tr>
-              </tbody>
-            </table>
+
+            <div className="inner-s">
+              <h6>Twitter</h6>
+              <span>@grace_effiom</span>
+            </div>
+            <div className="inner-s">
+              <h6>Facebook</h6>
+              <span>Grace Effiom</span>
+            </div>
+            <div className="inner-s">
+              <h6>Instagram</h6>
+              <span>@grace_effiom</span>
+            </div>
           </div>
           <hr />
-          <div className="guarantor">
+          <div className="guarantor categories">
             <h4>Guarantor</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Full Name</th>
-                  <th>Phone Number</th>
-                  <th>Email Address</th>
-                  <th>Relationship</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Debby Ogana</td>
-                  <td>07060780922</td>
-                  <td>debby@gmail.com</td>
-                  <td>Sister</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="inner-g">
+              <h6>Full Name</h6>
+              <span>Debby Ogana</span>
+            </div>
+            <div className="inner-g">
+              <h6>Phone Number</h6>
+              <span>07060780922</span>
+            </div>
+            <div className="inner-g">
+              <h6>Email Address</h6>
+              <span>debby@gmail.com</span>
+            </div>
+            <div className="inner-g">
+              <h6>Relationship</h6>
+              <span>Sister</span>
+            </div>
           </div>
           <hr />
-          <div className="untitled">
+          <div className="untitled categories">
             <h4>Untitled</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Full Name</th>
-                  <th>Phone Number</th>
-                  <th>Email Address</th>
-                  <th>Relationship</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Debby Ogana</td>
-                  <td>07060780922</td>
-                  <td>debby@gmail.com</td>
-                  <td>Sister</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="inner-u">
+              <h6>Full Name</h6>
+              <span>Debby Ogana</span>
+            </div>
+            <div className="inner-u">
+              <h6>Phone Number</h6>
+              <span>07060780922</span>
+            </div>
+            <div className="inner-u">
+              <h6>Email Address</h6>
+              <span>debby@gmail.com</span>
+            </div>
+            <div className="inner-u">
+              <h6>Relationship</h6>
+              <span>Sister</span>
+            </div>
           </div>
         </section>
       </div>

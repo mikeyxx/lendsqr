@@ -1,0 +1,120 @@
+@use "base";
+
+.blacklist-btn {
+  border: 1px solid base.$blacklisted;
+  border-radius: 8px;
+  font-family: "Work Sans SemiBold";
+  font-size: 14px;
+  color: base.$blacklisted;
+}
+
+.activate-btn {
+  border: 1px solid base.$primary;
+  border-radius: 8px;
+  font-family: "Work Sans SemiBold";
+  font-size: 14px;
+  color: base.$primary;
+}
+
+.go-back {
+  img {
+    color: base.$tertiary;
+  }
+
+  span {
+    font-family: "Work Sans Regular";
+    font-size: 16px;
+    color: base.$tertiary;
+  }
+}
+
+.head {
+  h2 {
+    font-family: "Work Sans Medium";
+    font-size: 24px;
+    color: base.$secondary;
+  }
+}
+
+.name {
+  .pic {
+    width: 100px;
+    height: 100px;
+    background-color: rgba($color: base.$secondary, $alpha: 0.16);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      color: base.$secondary;
+      width: 27.92px;
+      height: 29.3px;
+    }
+  }
+
+  h4 {
+    font-family: "Work Sans Medium";
+    font-size: 22px;
+    color: base.$secondary;
+  }
+
+  span {
+    font-family: "Work Sans Regular";
+    font-size: 14px;
+    color: base.$tertiary;
+  }
+}
+
+.tier-info {
+  h5 {
+    font-family: "Work Sans Medium";
+    font-size: 14px;
+    color: base.$tertiary;
+  }
+
+  img {
+    width: 14.08px;
+    height: 13.43px;
+  }
+}
+
+.account-balance {
+  .amount {
+    font-family: "Work Sans Medium";
+    font-size: 22px;
+    color: base.$secondary;
+  }
+
+  small {
+    font-family: "Work Sans Regular";
+    font-size: 12px;
+    color: base.$secondary;
+  }
+}
+
+.details-menu {
+  ul {
+    li {
+      font-family: "SF Compact Regular";
+      font-size: 16px;
+    }
+  }
+}
+
+.categories {
+  h4 {
+    font-family: "Work Sans Medium";
+    font-size: 16px;
+  }
+
+  h6 {
+    font-family: "Work Sans Regular";
+    font-size: 12px;
+  }
+
+  span {
+    font-family: "Work Sans Medium";
+    font-size: 16px;
+  }
+}

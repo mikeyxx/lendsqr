@@ -26,3 +26,15 @@ body {
   box-sizing: inherit;
   /* min-height: 100vh; */
 }
+
+.menu > li {
+  list-style: none;
+  font-family: "Work Sans Regular";
+  font-size: 16px;
+  color: #213f7d;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 31px;
+  cursor: pointer;
+}

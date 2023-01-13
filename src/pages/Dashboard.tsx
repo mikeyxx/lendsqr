@@ -3,13 +3,18 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import UserContent from "../components/UserContent";
 
-const Dashboard = () => {
+interface Props {
+  menu: boolean;
+  setMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Dashboard = ({ menu, setMenu }: Props) => {
   return (
     <div className="dashboardContainer">
-      <Header />
+      <Header menu={menu} setMenu={setMenu} />
       <div className="dashboard-wrapper">
-        <Sidebar />
-        <UserContent />
+        <Sidebar menu={menu} />
+        <UserContent menu={menu} setMenu={setMenu} />
       </div>
     </div>
   );

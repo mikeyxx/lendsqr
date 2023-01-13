@@ -1,5 +1,6 @@
 import users_count from "../assets/user-icon.svg";
 import active_user from "../assets/active-users.svg";
+import loan_users from "../assets/users-with-loan.svg";
 import total_savings from "../assets/users-with-savings.svg";
 import filter from "../assets/filter.svg";
 import more from "../assets/more.svg";
@@ -9,71 +10,86 @@ import view from "../assets/view.svg";
 import karma from "../assets/user-times.svg";
 import activate from "../assets/activate.svg";
 
+import "../styles/filter.scss";
+
 const UserInfoFilter = () => {
   return (
     <div className="userInfoFilterContainer">
       <h2>Users</h2>
       <div className="summary-card">
-        <div className="users-card">
+        <div className="users-card cards">
           <img src={users_count} alt="" />
           <h4>Users</h4>
           <span className="total-value">2,453</span>
         </div>
-        <div className="active-users-card">
+        <div className="active-users-card cards">
           <img src={active_user} alt="" />
           <h4>Active Users</h4>
           <span className="total-value">2,453</span>
         </div>
-        <div className="active-users-card">
+        <div className="loan-users-card cards">
+          <img src={loan_users} alt="" />
+          <h4>Users with loans</h4>
+          <span className="total-value">12,453</span>
+        </div>
+        <div className="saving-users-card cards">
           <img src={total_savings} alt="" />
           <h4>Users with savings</h4>
           <span className="total-value">102,453</span>
         </div>
       </div>
       <div className="user-overview">
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <h4>Organization</h4>
-                <img src={filter} alt="" />
-              </th>
-              <th>
-                <h4>Username</h4>
-                <img src={filter} alt="" />
-              </th>
-              <th>
-                <h4>Email</h4>
-                <img src={filter} alt="" />
-              </th>
-              <th>
-                <h4>Phone Number</h4>
-                <img src={filter} alt="" />
-              </th>
-              <th>
-                <h4>Date Joined</h4>
-                <img src={filter} alt="" />
-              </th>
-              <th>
-                <h4>Status</h4>
-                <img src={filter} alt="" />
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Lendsqr</td>
-              <td>Adedeji</td>
-              <td>Adedeji@lendsqr.com</td>
-              <td>08078903721</td>
-              <td>May 15, 2020 10:00am</td>
-              <td>Status</td>
-              <td>
-                <img src={more} alt="" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="user-overview-wrapper">
+          <div className="wrap">
+            <div className="inner">
+              <h4>Organization</h4>
+              <img src={filter} alt="" />
+            </div>
+            <span>Lendsqr</span>
+          </div>
+
+          <div className="wrap">
+            <div className="inner">
+              <h4>Username</h4>
+              <img src={filter} alt="" />
+            </div>
+            <span>Adedeji</span>
+          </div>
+
+          <div className="wrap">
+            <div className="inner">
+              <h4>Email</h4>
+              <img src={filter} alt="" />
+            </div>
+            <span>Adedeji@lendsqr.com</span>
+          </div>
+
+          <div className="wrap">
+            <div className="inner">
+              <h4>Phone Number</h4>
+              <img src={filter} alt="" />
+            </div>
+            <span>08078903721</span>
+          </div>
+
+          <div className="wrap">
+            <div className="inner">
+              <h4>Date Joined</h4>
+              <img src={filter} alt="" />
+            </div>
+            <span>May 15, 2020 10:00am</span>
+          </div>
+          <div className="wrap">
+            <div className="inner">
+              <h4>Status</h4>
+              <img src={filter} alt="" />
+            </div>
+            <span>Status</span>
+          </div>
+          <div>
+            <img src={more} alt="" />
+          </div>
+        </div>
       </div>
       <div className="paginate">
         <div>
@@ -94,53 +110,65 @@ const UserInfoFilter = () => {
       </div>
       <div className="filter-dropdown">
         <div className="filter-wrapper">
-          <div className="org">
-            <label htmlFor="">Organization</label>
+          <div className="org field">
+            <label htmlFor="" className="label">
+              Organization
+            </label>
             <select>
               <option>Select</option>
             </select>
           </div>
-          <div className="username">
-            <label htmlFor="">Username</label>
+          <div className="username field">
+            <label htmlFor="" className="label">
+              Username
+            </label>
             <input type="text" placeholder="User" />
           </div>
 
-          <div className="email">
-            <label htmlFor="">Email</label>
+          <div className="email field">
+            <label htmlFor="" className="label">
+              Email
+            </label>
             <input type="text" placeholder="Email" />
           </div>
-          <div className="date">
-            <label htmlFor="">Date</label>
+          <div className="date field">
+            <label htmlFor="" className="label">
+              Date
+            </label>
             <input type="date" placeholder="Date" />
           </div>
-          <div className="phonenumber">
-            <label htmlFor="">Phone Number</label>
+          <div className="phonenumber field">
+            <label htmlFor="" className="label">
+              Phone Number
+            </label>
             <input type="text" placeholder="Phone Number" />
           </div>
-          <div className="status">
-            <label htmlFor="">Status</label>
+          <div className="status field">
+            <label htmlFor="" className="label">
+              Status
+            </label>
             <select>
               <option>Select</option>
             </select>
           </div>
           <div className="go">
-            <button className="btn light">Reset</button>
-            <button className="btn filled">Filter</button>
+            <button className="reset-btn light">Reset</button>
+            <button className="filter-btn filled">Filter</button>
           </div>
         </div>
       </div>
       <div className="three-dots-container">
         <div className="three-dots-wrapper">
-          <div className="view-details">
-            <img src={view} alt="" />
+          <div className="view-details action">
+            <img src={view} alt="" className="view" />
             <span>View Details</span>
           </div>
-          <div className="blacklist-user">
-            <img src={karma} alt="" />
+          <div className="blacklist-user action">
+            <img src={karma} alt="" className="karma" />
             <span>Blacklist User</span>
           </div>
-          <div className="activate-user">
-            <img src={activate} alt="" />
+          <div className="activate-user action">
+            <img src={activate} alt="" className="activate" />
             <span>Activate User</span>
           </div>
         </div>
