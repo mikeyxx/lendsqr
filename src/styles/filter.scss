@@ -1,15 +1,58 @@
 @use "base";
 
 .userInfoFilterContainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px 10px;
+  transition: all 0.3s;
+  overflow-x: hidden;
   h2 {
     font-family: "Work Sans Medium";
     font-size: 24px;
     color: base.$secondary;
+    margin-bottom: 20px;
   }
+}
+
+.userInfoFilterContainer.up {
+  margin-top: -80px;
+}
+
+@media (min-width: 600px) {
+  .userInfoFilterContainer {
+    max-width: 760px;
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 920px) {
+  .userInfoFilterContainer {
+    max-width: 1037px;
+
+    .summary-card {
+      display: flex;
+      gap: 26px;
+    }
+  }
+
+  .userInfoFilterContainer.up {
+    margin-top: 0;
+  }
+}
+
+.try {
+  position: relative;
 }
 
 //form
 .filter-wrapper {
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid rgba(84, 95, 125, 0.14);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 20px;
+  z-index: 10;
   .field {
     display: flex;
     flex-direction: column;
@@ -48,6 +91,26 @@
   font-family: "Work Sans SemiBold";
   font-size: 14px;
   color: #fff;
+}
+
+.sub {
+  border: 1px solid #545f7d;
+  border-radius: 8px;
+  padding: 12px 30px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.reset-btn {
+  margin-right: 14px;
+}
+
+.dots {
+  position: relative;
+}
+
+.three-dots-container {
+  position: absolute;
 }
 
 .three-dots-wrapper {

@@ -2,6 +2,7 @@
 
 .sidebarContainer {
   position: relative;
+  // overflow-x: hidden;
 }
 
 .sidebar-wrapper {
@@ -21,6 +22,15 @@
 
 .sidebar-wrapper.toggle {
   transform: translateX(0);
+}
+
+@media (min-width: 920px) {
+  .sidebar-wrapper {
+    max-width: 100vw;
+    position: static;
+    transform: translateX(0);
+    margin: 0;
+  }
 }
 
 .switch-Organization {

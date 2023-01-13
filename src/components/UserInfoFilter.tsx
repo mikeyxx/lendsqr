@@ -9,12 +9,15 @@ import next from "../assets/next-btn.svg";
 import view from "../assets/view.svg";
 import karma from "../assets/user-times.svg";
 import activate from "../assets/activate.svg";
+import "../styles/userfilterStyles.scss";
+import { UseDataContext } from "../context/AppContext";
 
 import "../styles/filter.scss";
 
 const UserInfoFilter = () => {
+  const { menu } = UseDataContext();
   return (
-    <div className="userInfoFilterContainer">
+    <div className={`userInfoFilterContainer ${!menu ? "up" : ""}`}>
       <h2>Users</h2>
       <div className="summary-card">
         <div className="users-card cards">
@@ -84,23 +87,26 @@ const UserInfoFilter = () => {
               <h4>Status</h4>
               <img src={filter} alt="" />
             </div>
-            <span>Status</span>
+            <span>Active</span>
           </div>
-          <div>
+          <div className="dots">
             <img src={more} alt="" />
           </div>
         </div>
       </div>
       <div className="paginate">
-        <div>
-          <span>Showing</span>
-          <select>
-            <option>Hello</option>
-          </select>
-          <span>Out of 100</span>
+        <div className="drop-paginate">
+          <div>
+            <span>Showing</span>
+            <select>
+              <option>Hello</option>
+            </select>
+          </div>
+
+          <span className="out-of">Out of 100</span>
         </div>
 
-        <div>
+        <div className="pag">
           <img src={prev} alt="" />
           <button>1</button>
           <button>2</button>
@@ -109,7 +115,7 @@ const UserInfoFilter = () => {
         </div>
       </div>
       <div className="filter-dropdown">
-        <div className="filter-wrapper">
+        <div className="filter-wrapper ">
           <div className="org field">
             <label htmlFor="" className="label">
               Organization
@@ -152,8 +158,8 @@ const UserInfoFilter = () => {
             </select>
           </div>
           <div className="go">
-            <button className="reset-btn light">Reset</button>
-            <button className="filter-btn filled">Filter</button>
+            <button className="reset-btn sub light">Reset</button>
+            <button className="filter-btn sub filled">Filter</button>
           </div>
         </div>
       </div>

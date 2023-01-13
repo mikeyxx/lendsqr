@@ -22,15 +22,16 @@ import percent from "../assets/badge-percent.svg";
 import clipboard from "../assets/clipboard-list.svg";
 import tire from "../assets/tire.svg";
 import logout from "../assets/sign-out.svg";
-
+import { UseDataContext } from "../context/AppContext";
 //Side bar styles
 import "../styles/sidebar.scss";
 
-interface Props {
-  menu: boolean;
-}
+// interface Props {
+//   menu: boolean;
+// }
 
-const Sidebar = ({ menu }: Props) => {
+const Sidebar = () => {
+  const { menu } = UseDataContext();
   return (
     <div className="sidebarContainer">
       <div className={`sidebar-wrapper ${menu ? "toggle" : ""}`}>

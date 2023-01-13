@@ -4,16 +4,18 @@ import searchIcon from "../assets/Vector.svg";
 import bell from "../assets/np_notification.png";
 import avatar from "../assets/avatar.png";
 import dropdownArrow from "../assets/dropdown-icon.svg";
+import { UseDataContext } from "../context/AppContext";
 
 // Styles
 import "../styles/header.scss";
 
-interface Props {
-  menu: boolean;
-  setMenu: React.Dispatch<React.SetStateAction<boolean>>;
-}
+// interface Props {
+//   menu: boolean;
+//   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
+// }
 
-const Header = ({ menu, setMenu }: Props) => {
+const Header = () => {
+  const { menu, setMenu } = UseDataContext();
   const handletoggle = () => {
     setMenu((prev) => !prev);
   };
@@ -32,8 +34,11 @@ const Header = ({ menu, setMenu }: Props) => {
         </div>
 
         <div className={`profile ${menu ? "toggle" : ""} `}>
-          <a href="#">Doc</a>
-          <img src={bell} alt="" className="bell" />
+          <div className="profileDocs">
+            <a href="#">Doc</a>
+            <img src={bell} alt="" className="bell" />
+          </div>
+
           <div className="profileDetails">
             <img src={avatar} alt="" />
             <div className="profileElements">

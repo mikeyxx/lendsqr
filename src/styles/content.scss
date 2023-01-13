@@ -5,6 +5,7 @@
   margin: 0 auto;
   padding: 20px 10px;
   transition: all 0.3s;
+  overflow-x: hidden;
   h2 {
     font-family: "Work Sans Medium";
     font-size: 24px;
@@ -14,12 +15,28 @@
 }
 
 .userContentContainer.up {
-  margin-top: -80px;
+  margin-top: -20px;
 }
 
-@media (min-width: 600) {
+@media (min-width: 600px) {
   .userContentContainer {
     max-width: 760px;
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 920px) {
+  .userContentContainer {
+    max-width: 1037px;
+
+    .summary-card {
+      display: flex;
+      gap: 26px;
+    }
+  }
+
+  .userContentContainer.up {
+    margin-top: 0;
   }
 }
 
@@ -32,9 +49,7 @@
   border-radius: 4px;
   height: 160px;
   width: 100%;
-  // width: 240px;
   padding-top: 20px;
-  // adjust back to 30px
   padding-left: 60px;
   padding-bottom: 30px;
   display: flex;
@@ -57,10 +72,17 @@
   }
 }
 
-@media (min-width: 600) {
+@media (min-width: 600px) {
   .cards {
     max-width: 760px;
     width: 100%;
+  }
+}
+
+@media (min-width: 920px) {
+  .cards {
+    width: 240px;
+    padding-left: 30px;
   }
 }
 
@@ -74,10 +96,13 @@
 }
 
 .user-overview-wrapper {
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  padding: 30px;
   .wrap {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     .inner {
       display: flex;
@@ -112,6 +137,53 @@
   }
 }
 
+@media (min-width: 920px) {
+  .user-overview {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .user-overview-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    .wrap {
+      display: flex;
+      flex-direction: column;
+
+      align-items: flex-start;
+      // gap: 10px;
+      .inner {
+        display: flex;
+        // gap: 10px;
+        font-family: "Work Sans SemiBold";
+        font-size: 12px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        color: base.$tertiary;
+
+        img {
+          // Desktop
+          width: 16px;
+          height: 10.67px;
+        }
+      }
+
+      span {
+        font-family: "Work Sans Regular";
+        // Deskstop
+        font-size: 14px;
+
+        color: base.$tertiary;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
 .paginate {
   width: 100%;
   display: flex;
@@ -119,9 +191,11 @@
   flex-direction: column;
   justify-content: space-between;
   font-size: 25px;
+  margin-top: 20px;
 
   .drop-paginate {
     display: flex;
+    align-items: center;
     flex-direction: column;
 
     span:first-of-type {
@@ -145,6 +219,50 @@
     button {
       margin: 25px 7px;
       padding: 3px 8px;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}
+
+@media (min-width: 920px) {
+  .paginate {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Work Sans Regular";
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 20px;
+
+    .drop-paginate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+
+      select {
+        font-size: 14px;
+      }
+
+      .out-of {
+        margin-top: 0px;
+        margin-left: 10px;
+      }
+    }
+
+    .pag {
+      font-size: 14px;
+
+      button {
+        font-size: 14px;
+
+        margin: 0px;
+        padding: 0px;
+        border: none;
+        background-color: transparent;
+      }
     }
   }
 }

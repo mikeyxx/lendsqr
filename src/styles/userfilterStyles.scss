@@ -1,13 +1,13 @@
-.dashboardContainer {
+.usersFilterContainer {
   overflow-x: hidden;
 }
 
-.dashboard-wrapper {
+.usersFilter-wrapper {
   overflow-x: hidden;
 }
 
 @media (min-width: 920px) {
-  .dashboard-wrapper {
+  .usersFilter-wrapper {
     display: flex;
     gap: 60px;
   }

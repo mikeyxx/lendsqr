@@ -6,15 +6,17 @@ import filter from "../assets/filter.svg";
 import more from "../assets/more.svg";
 import prev from "../assets/prev-btn.svg";
 import next from "../assets/next-btn.svg";
-
+import { UseDataContext } from "../context/AppContext";
 import "../styles/content.scss";
+import { Link } from "react-router-dom";
 
-interface Props {
-  menu: boolean;
-  setMenu: React.Dispatch<React.SetStateAction<boolean>>;
-}
+// interface Props {
+//   menu: boolean;
+// }
 
-const UserContent = ({ menu, setMenu }: Props) => {
+const UserContent = () => {
+  const { menu } = UseDataContext();
+
   return (
     <div className={`userContentContainer ${!menu ? "up" : ""} `}>
       <h2>Users</h2>
@@ -45,7 +47,9 @@ const UserContent = ({ menu, setMenu }: Props) => {
           <div className="wrap">
             <div className="inner">
               <h4>Organization</h4>
-              <img src={filter} alt="" />
+              <Link to="/filter">
+                <img src={filter} alt="" />
+              </Link>
             </div>
             <span>Lendsqr</span>
           </div>
@@ -53,7 +57,9 @@ const UserContent = ({ menu, setMenu }: Props) => {
           <div className="wrap">
             <div className="inner">
               <h4>Username</h4>
-              <img src={filter} alt="" />
+              <Link to="/filter">
+                <img src={filter} alt="" />
+              </Link>
             </div>
             <span>Adedeji</span>
           </div>
@@ -61,7 +67,9 @@ const UserContent = ({ menu, setMenu }: Props) => {
           <div className="wrap">
             <div className="inner">
               <h4>Email</h4>
-              <img src={filter} alt="" />
+              <Link to="/filter">
+                <img src={filter} alt="" />
+              </Link>
             </div>
             <span>Adedeji@lendsqr.com</span>
           </div>
@@ -69,7 +77,9 @@ const UserContent = ({ menu, setMenu }: Props) => {
           <div className="wrap">
             <div className="inner">
               <h4>Phone Number</h4>
-              <img src={filter} alt="" />
+              <Link to="/filter">
+                <img src={filter} alt="" />
+              </Link>
             </div>
             <span>08078903721</span>
           </div>
@@ -77,18 +87,22 @@ const UserContent = ({ menu, setMenu }: Props) => {
           <div className="wrap">
             <div className="inner">
               <h4>Date Joined</h4>
-              <img src={filter} alt="" />
+              <Link to="/filter">
+                <img src={filter} alt="" />
+              </Link>
             </div>
             <span>May 15, 2020 10:00am</span>
           </div>
           <div className="wrap">
             <div className="inner">
               <h4>Status</h4>
-              <img src={filter} alt="" />
+              <Link to="/filter">
+                <img src={filter} alt="" />
+              </Link>
             </div>
             <span>Inactive</span>
           </div>
-          <div>
+          <div className="dashDots">
             <img src={more} alt="" />
           </div>
         </div>

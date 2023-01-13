@@ -25,6 +25,7 @@
 body {
   box-sizing: inherit;
   /* min-height: 100vh; */
+  scroll-behavior: smooth;
 }
 
 .menu > li {

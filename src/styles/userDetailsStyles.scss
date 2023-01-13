@@ -1,13 +1,13 @@
-.dashboardContainer {
+.user-details-container {
   overflow-x: hidden;
 }
 
-.dashboard-wrapper {
+.user-details-wrapper {
   overflow-x: hidden;
 }
 
 @media (min-width: 920px) {
-  .dashboard-wrapper {
+  .user-details-wrapper {
     display: flex;
     gap: 60px;
   }
