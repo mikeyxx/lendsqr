@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import users_count from "../assets/user-icon.svg";
 import active_user from "../assets/active-users.svg";
 import loan_users from "../assets/users-with-loan.svg";
@@ -10,12 +11,12 @@ import view from "../assets/view.svg";
 import karma from "../assets/user-times.svg";
 import activate from "../assets/activate.svg";
 import "../styles/userfilterStyles.scss";
-import { UseDataContext } from "../context/AppContext";
 
 import "../styles/filter.scss";
+import { DataContext } from "../App";
 
 const UserInfoFilter = () => {
-  const { menu } = UseDataContext();
+  const { menu } = useContext(DataContext);
   return (
     <div className={`userInfoFilterContainer ${!menu ? "up" : ""}`}>
       <h2>Users</h2>

@@ -1,21 +1,47 @@
+import axios from "axios";
+import { useEffect } from "react";
 import users_count from "../assets/user-icon.svg";
 import active_user from "../assets/active-users.svg";
+import { useContext } from "react";
 import loan_users from "../assets/users-with-loan.svg";
 import total_savings from "../assets/users-with-savings.svg";
 import filter from "../assets/filter.svg";
 import more from "../assets/more.svg";
 import prev from "../assets/prev-btn.svg";
 import next from "../assets/next-btn.svg";
-import { UseDataContext } from "../context/AppContext";
 import "../styles/content.scss";
 import { Link } from "react-router-dom";
-
-// interface Props {
-//   menu: boolean;
-// }
+import { DataContext } from "../App";
 
 const UserContent = () => {
-  const { menu } = UseDataContext();
+  const {
+    menu,
+    setMenu,
+    users,
+    setUsers,
+    currentPage,
+    setCurrentPage,
+    usersPerPage,
+    setUsersPerPage,
+  } = useContext(DataContext);
+
+  const fetchUsers = async () => {
+    const res = await axios.get(
+      "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users "
+    );
+    const info = res.data;
+    setUsers(info);
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const indexOfLastPage = currentPage * usersPerPage;
+  const indexOfFirstPage = indexOfLastPage - usersPerPage;
+  const currentUsers = users.slice(indexOfFirstPage, indexOfLastPage);
+
+  console.log(currentUsers, users);
 
   return (
     <div className={`userContentContainer ${!menu ? "up" : ""} `}>
@@ -43,69 +69,71 @@ const UserContent = () => {
         </div>
       </div>
       <div className="user-overview">
-        <div className="user-overview-wrapper">
-          <div className="wrap">
-            <div className="inner">
-              <h4>Organization</h4>
-              <Link to="/filter">
-                <img src={filter} alt="" />
-              </Link>
+        {currentUsers.map((user) => (
+          <div key={user.id} className="user-overview-wrapper">
+            <div className="wrap">
+              <div className="inner">
+                <h4>Organization</h4>
+                <Link to="/filter">
+                  <img src={filter} alt="" />
+                </Link>
+              </div>
+              <span>{user.orgName}</span>
             </div>
-            <span>Lendsqr</span>
-          </div>
 
-          <div className="wrap">
-            <div className="inner">
-              <h4>Username</h4>
-              <Link to="/filter">
-                <img src={filter} alt="" />
-              </Link>
+            <div className="wrap">
+              <div className="inner">
+                <h4>Username</h4>
+                <Link to="/filter">
+                  <img src={filter} alt="" />
+                </Link>
+              </div>
+              <span>{user.userName}</span>
             </div>
-            <span>Adedeji</span>
-          </div>
 
-          <div className="wrap">
-            <div className="inner">
-              <h4>Email</h4>
-              <Link to="/filter">
-                <img src={filter} alt="" />
-              </Link>
+            <div className="wrap">
+              <div className="inner">
+                <h4>Email</h4>
+                <Link to="/filter">
+                  <img src={filter} alt="" />
+                </Link>
+              </div>
+              <span>{user.email}</span>
             </div>
-            <span>Adedeji@lendsqr.com</span>
-          </div>
 
-          <div className="wrap">
-            <div className="inner">
-              <h4>Phone Number</h4>
-              <Link to="/filter">
-                <img src={filter} alt="" />
-              </Link>
+            <div className="wrap">
+              <div className="inner">
+                <h4>Phone Number</h4>
+                <Link to="/filter">
+                  <img src={filter} alt="" />
+                </Link>
+              </div>
+              <span>{user.phoneNumber}</span>
             </div>
-            <span>08078903721</span>
-          </div>
 
-          <div className="wrap">
-            <div className="inner">
-              <h4>Date Joined</h4>
-              <Link to="/filter">
-                <img src={filter} alt="" />
-              </Link>
+            <div className="wrap">
+              <div className="inner">
+                <h4>Date Joined</h4>
+                <Link to="/filter">
+                  <img src={filter} alt="" />
+                </Link>
+              </div>
+              <span>{user.createdAt}</span>
             </div>
-            <span>May 15, 2020 10:00am</span>
-          </div>
-          <div className="wrap">
-            <div className="inner">
-              <h4>Status</h4>
-              <Link to="/filter">
-                <img src={filter} alt="" />
-              </Link>
+            <div className="wrap">
+              <div className="inner">
+                <h4>Status</h4>
+                <Link to="/filter">
+                  <img src={filter} alt="" />
+                </Link>
+              </div>
+              <span>Inactive</span>
             </div>
-            <span>Inactive</span>
+            <div className="dashDots">
+              <img src={more} alt="" />
+            </div>
           </div>
-          <div className="dashDots">
-            <img src={more} alt="" />
-          </div>
-        </div>
+        ))}
       </div>
       <div className="paginate">
         <div className="drop-paginate">

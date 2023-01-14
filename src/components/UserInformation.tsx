@@ -2,12 +2,13 @@ import back from "../assets/back.svg";
 import placeholder from "../assets/placeholder.svg";
 import filledStar from "../assets/filled-star.svg";
 import unfilledStar from "../assets/unfilled-star.svg";
-import { UseDataContext } from "../context/AppContext";
 import "../styles/details.scss";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { DataContext } from "../App";
 
 const UserInformation = () => {
-  const { menu } = UseDataContext();
+  const { menu } = useContext(DataContext);
   const navigate = useNavigate();
 
   const navigateBack = () => {

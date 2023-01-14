@@ -1,21 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../assets/Group.svg";
 import searchIcon from "../assets/Vector.svg";
 import bell from "../assets/np_notification.png";
 import avatar from "../assets/avatar.png";
 import dropdownArrow from "../assets/dropdown-icon.svg";
-import { UseDataContext } from "../context/AppContext";
 
 // Styles
 import "../styles/header.scss";
-
-// interface Props {
-//   menu: boolean;
-//   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
-// }
+import { DataContext } from "../App";
 
 const Header = () => {
-  const { menu, setMenu } = UseDataContext();
+  const { menu, setMenu } = useContext(DataContext);
   const handletoggle = () => {
     setMenu((prev) => !prev);
   };
