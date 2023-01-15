@@ -2,7 +2,6 @@ import { createContext, useState } from "react";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import UserDetails from "./pages/UserDetails";
-import UserFilter from "./pages/UserFilter";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Users } from "./components/UserData";
 
@@ -15,6 +14,14 @@ interface ApplicationContext {
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   usersPerPage: number;
   setUsersPerPage: React.Dispatch<React.SetStateAction<number>>;
+  numberOfValues: string;
+  seNumberOfValues: React.Dispatch<React.SetStateAction<string>>;
+  disableBtn: boolean;
+  setDisableBtn: React.Dispatch<React.SetStateAction<boolean>>;
+  userData: Users[];
+  setUserData: React.Dispatch<React.SetStateAction<Users[]>>;
+  savedData: Users[];
+  setSavedData: React.Dispatch<React.SetStateAction<Users[]>>;
 }
 
 const contextDefaultValues: ApplicationContext = {
@@ -26,10 +33,15 @@ const contextDefaultValues: ApplicationContext = {
   setCurrentPage: () => {},
   usersPerPage: 10,
   setUsersPerPage: () => {},
+  numberOfValues: "10",
+  seNumberOfValues: () => {},
+  disableBtn: false,
+  setDisableBtn: () => {},
+  userData: [],
+  setUserData: () => {},
+  savedData: [],
+  setSavedData: () => {},
 };
-
-export const TodosContext =
-  createContext<ApplicationContext>(contextDefaultValues);
 
 export const DataContext =
   createContext<ApplicationContext>(contextDefaultValues);
@@ -44,6 +56,10 @@ function App() {
   const [users, setUsers] = useState<Users[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [usersPerPage, setUsersPerPage] = useState<number>(10);
+  const [numberOfValues, seNumberOfValues] = useState<string>("10");
+  const [disableBtn, setDisableBtn] = useState<boolean>(false);
+  const [userData, setUserData] = useState<Users[]>([]);
+  const [savedData, setSavedData] = useState<Users[]>([]);
 
   return (
     <>
@@ -71,12 +87,19 @@ function App() {
               setCurrentPage,
               usersPerPage,
               setUsersPerPage,
+              numberOfValues,
+              seNumberOfValues,
+              disableBtn,
+              setDisableBtn,
+              userData,
+              setUserData,
+              savedData,
+              setSavedData,
             }}
           >
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/filter" element={<UserFilter />} />
-              <Route path="/details" element={<UserDetails />} />
+              <Route path="/details/:id" element={<UserDetails />} />
             </Routes>
           </DataContext.Provider>
         </Router>

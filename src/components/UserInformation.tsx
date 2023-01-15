@@ -1,19 +1,24 @@
 import back from "../assets/back.svg";
-import placeholder from "../assets/placeholder.svg";
 import filledStar from "../assets/filled-star.svg";
 import unfilledStar from "../assets/unfilled-star.svg";
 import "../styles/details.scss";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DataContext } from "../App";
+import { Users } from "./UserData";
 
-const UserInformation = () => {
+interface Props {
+  saved: Users;
+}
+
+const UserInformation = ({ saved }: Props) => {
   const { menu } = useContext(DataContext);
   const navigate = useNavigate();
 
   const navigateBack = () => {
-    navigate("/filter");
+    navigate("/");
   };
+
   return (
     <div className={`user-info-wrapper ${!menu ? "up" : ""}`}>
       <header>
@@ -38,11 +43,13 @@ const UserInformation = () => {
           <div className="user-info-menu">
             <div className="name">
               <div className="pic">
-                <img src={placeholder} alt="" />
+                <img src={saved?.profile?.avatar} alt="" />
               </div>
               <div>
-                <h4>Grace Effiom</h4>
-                <span>LSQFf5B7g90</span>
+                <h4>
+                  {saved?.profile?.firstName} {saved?.profile?.lastName}
+                </h4>
+                <span>{saved?.profile?.bvn}</span>
               </div>
             </div>
             <span className="divide"></span>
@@ -55,8 +62,8 @@ const UserInformation = () => {
             <span className="divide"></span>
 
             <div className="account-balance">
-              <h5 className="amount">#200,000.00</h5>
-              <small>7868764378/Providus Bank</small>
+              <h5 className="amount">₦{saved?.accountBalance}</h5>
+              <small>{saved?.accountNumber}/Providus Bank</small>
             </div>
           </div>
           <nav className="details-menu">
@@ -88,23 +95,25 @@ const UserInformation = () => {
             <div className="section-one-wrapper-first">
               <div className="inner-p">
                 <h6>Full Name</h6>
-                <span>Grace Effiom</span>
+                <span>
+                  {saved?.profile?.firstName} {saved?.profile?.lastName}
+                </span>
               </div>
               <div className="inner-p">
                 <h6>Phone Number</h6>
-                <span>07060780922</span>
+                <span>{saved?.profile?.phoneNumber}</span>
               </div>
               <div className="inner-p">
                 <h6>Email Address</h6>
-                <span>grace@gmail.com</span>
+                <span>{saved?.email}</span>
               </div>
               <div className="inner-p">
                 <h6>BVN</h6>
-                <span>223787632395</span>
+                <span>{saved?.profile?.bvn}</span>
               </div>
               <div className="inner-p">
                 <h6>Gender</h6>
-                <h6>Female</h6>
+                <h6>{saved?.profile?.gender}</h6>
               </div>
             </div>
 
@@ -115,11 +124,11 @@ const UserInformation = () => {
               </div>
               <div className="inner-p no-child">
                 <h6>Children</h6>
-                <span>None</span>
+                <span>N/A</span>
               </div>
               <div className="inner-p residence">
                 <h6>Type of Residence</h6>
-                <span>Parent's Apartment</span>
+                <span>N/A</span>
               </div>
             </div>
           </div>
@@ -132,34 +141,34 @@ const UserInformation = () => {
             <div className="section-one-wrapper-first">
               <div className="inner-ee">
                 <h6>Level of Education</h6>
-                <span>B.Sc</span>
+                <span>{saved?.education?.level}</span>
               </div>
               <div className="inner-ee">
                 <h6>Employment Status</h6>
-                <span>Employed</span>
+                <span>{saved?.education?.employmentStatus}</span>
               </div>
               <div className="inner-ee">
                 <h6>Sector of Employment</h6>
-                <span>FinTech</span>
+                <span>{saved?.education?.sector}</span>
               </div>
               <div className="inner-ee">
                 <h6>Duration of Employment</h6>
-                <span>2 years</span>
+                <span>{saved?.education?.duration}</span>
               </div>
             </div>
 
             <div className="section-one-wrapper-second">
               <div className="inner-ee">
                 <h6>Office Email</h6>
-                <span>grace@lendsqr.com</span>
+                <span>{saved?.education?.officeEmail}</span>
               </div>
               <div className="inner-ee income">
                 <h6>Monthly Income</h6>
-                <span>#200,000.00 - #400,00.00</span>
+                <span>₦{saved?.education?.monthlyIncome}</span>
               </div>
               <div className="inner-ee loan">
                 <h6>Loan Repayment</h6>
-                <span>40,000</span>
+                <span>₦{saved?.education?.loanRepayment}</span>
               </div>
             </div>
           </div>
@@ -170,15 +179,15 @@ const UserInformation = () => {
           <div className="small-screen">
             <div className="inner-s">
               <h6>Twitter</h6>
-              <span>@grace_effiom</span>
+              <span>{saved?.socials?.twitter}</span>
             </div>
             <div className="inner-s fb">
               <h6>Facebook</h6>
-              <span>Grace Effiom</span>
+              <span>{saved?.socials?.facebook}</span>
             </div>
             <div className="inner-s ig">
               <h6>Instagram</h6>
-              <span>@grace_effiom</span>
+              <span>{saved?.socials?.instagram}</span>
             </div>
           </div>
         </div>
@@ -188,44 +197,25 @@ const UserInformation = () => {
           <div className="small-screen">
             <div className="inner-g">
               <h6>Full Name</h6>
-              <span>Debby Ogana</span>
+              <span>
+                {saved?.guarantor?.firstName} {saved?.guarantor?.lastName}
+              </span>
             </div>
             <div className="inner-g phone">
               <h6>Phone Number</h6>
-              <span>07060780922</span>
+              <span>{saved?.guarantor?.phoneNumber}</span>
             </div>
             <div className="inner-g g-email">
               <h6>Email Address</h6>
-              <span>debby@gmail.com</span>
+              <span>N/A</span>
             </div>
             <div className="inner-g fam">
               <h6>Relationship</h6>
-              <span>Sister</span>
+              <span>N/A</span>
             </div>
           </div>
         </div>
         <hr />
-        <div className="untitled categories">
-          <h4>Untitled</h4>
-          <div className="small-screen">
-            <div className="inner-u">
-              <h6>Full Name</h6>
-              <span>Debby Ogana</span>
-            </div>
-            <div className="inner-u u-phone">
-              <h6>Phone Number</h6>
-              <span>07060780922</span>
-            </div>
-            <div className="inner-u u-email">
-              <h6>Email Address</h6>
-              <span>debby@gmail.com</span>
-            </div>
-            <div className="inner-u u-fam">
-              <h6>Relationship</h6>
-              <span>Sister</span>
-            </div>
-          </div>
-        </div>
       </section>
     </div>
   );

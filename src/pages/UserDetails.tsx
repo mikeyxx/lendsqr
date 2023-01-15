@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import UserInformation from "../components/UserInformation";
+import UserInfoParent from "../components/UserInfoParent";
 import "../styles/userDetailsStyles.scss";
 
 const UserDetails = () => {
@@ -9,7 +9,7 @@ const UserDetails = () => {
       <Header />
       <div className="user-details-wrapper">
         <Sidebar />
-        <UserInformation />
+        <UserInfoParent />
       </div>
     </div>
   );
