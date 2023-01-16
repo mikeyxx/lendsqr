@@ -7,13 +7,11 @@ import loan_users from "../assets/users-with-loan.svg";
 import total_savings from "../assets/users-with-savings.svg";
 import prev from "../assets/prev-btn.svg";
 import next from "../assets/next-btn.svg";
-import view from "../assets/view.svg";
-import karma from "../assets/user-times.svg";
-import activate from "../assets/activate.svg";
 import "../styles/content.scss";
 import { DataContext } from "../App";
 import SelectUserCount from "./SelectUserCount";
 import NavigatedUserCount from "./NavigatedUserCount";
+import ReactPaginate from "react-paginate";
 
 const UserContent = () => {
   const {
@@ -29,6 +27,7 @@ const UserContent = () => {
     seNumberOfValues,
     disableBtn,
     setDisableBtn,
+    drop,
   } = useContext(DataContext);
 
   const currentNumOfUsers = parseInt(numberOfValues);
@@ -55,6 +54,10 @@ const UserContent = () => {
   useEffect(() => {
     fetchUsers();
   }, [currentPage, currentNumOfUsers]);
+
+  // const handlePageClick = (data: {}) => {
+  //   console.log(data.selected);
+  // };
 
   return (
     <div className={`userContentContainer ${!menu ? "up" : ""} `}>
@@ -108,7 +111,7 @@ const UserContent = () => {
             </select>
           </div>
 
-          <span className="out-of">Out of {users.length}</span>
+          <span className="out-of">Out of 100</span>
         </div>
 
         <div className="pag">
@@ -138,10 +141,18 @@ const UserContent = () => {
           >
             <img src={next} alt="" />
           </button>
+          {/* <ReactPaginate
+            pageCount={10}
+            previousLabel={<img src={prev} alt="" />}
+            nextLabel={<img src={next} alt="" />}
+            breakLabel={"..."}
+            marginPagesDisplayed={3}
+            onPageChange={handlePageClick}
+          /> */}
         </div>
       </div>
       <div className="filter-dropdown">
-        <div className="filter-wrapper ">
+        <div className={`filter-wrapper ${drop ? "active" : "inactive"}`}>
           <div className="org field">
             <label htmlFor="" className="label">
               Organization
@@ -186,22 +197,6 @@ const UserContent = () => {
           <div className="go">
             <button className="reset-btn sub light">Reset</button>
             <button className="filter-btn sub filled">Filter</button>
-          </div>
-        </div>
-      </div>
-      <div className="three-dots-container">
-        <div className="three-dots-wrapper">
-          <div className="view-details action">
-            <img src={view} alt="" className="view" />
-            <span>View Details</span>
-          </div>
-          <div className="blacklist-user action">
-            <img src={karma} alt="" className="karma" />
-            <span>Blacklist User</span>
-          </div>
-          <div className="activate-user action">
-            <img src={activate} alt="" className="activate" />
-            <span>Activate User</span>
           </div>
         </div>
       </div>

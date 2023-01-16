@@ -154,8 +154,9 @@
 
     img {
       color: base.$secondary;
-      width: 27.92px;
-      height: 29.3px;
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
     }
   }
 

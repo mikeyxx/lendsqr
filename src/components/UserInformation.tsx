@@ -3,7 +3,7 @@ import filledStar from "../assets/filled-star.svg";
 import unfilledStar from "../assets/unfilled-star.svg";
 import "../styles/details.scss";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { DataContext } from "../App";
 import { Users } from "./UserData";
 

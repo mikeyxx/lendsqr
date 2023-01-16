@@ -38,4 +38,7 @@ export interface Users {
     monthlyIncome: [];
     loanRepayment: string;
   };
+
+  password: string;
+  username: string;
 }

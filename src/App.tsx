@@ -22,6 +22,11 @@ interface ApplicationContext {
   setUserData: React.Dispatch<React.SetStateAction<Users[]>>;
   savedData: Users[];
   setSavedData: React.Dispatch<React.SetStateAction<Users[]>>;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  drop: boolean;
+  setDrop: React.Dispatch<React.SetStateAction<boolean>>;
+  // setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const contextDefaultValues: ApplicationContext = {
@@ -41,6 +46,11 @@ const contextDefaultValues: ApplicationContext = {
   setUserData: () => {},
   savedData: [],
   setSavedData: () => {},
+  open: false,
+  setOpen: () => {},
+  drop: false,
+  setDrop: () => {},
+  // setIsLoggedIn: () => {},
 };
 
 export const DataContext =
@@ -48,9 +58,10 @@ export const DataContext =
 
 function App() {
   const [menu, setMenu] = useState<boolean>(false);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [loggedUser, setLoggedUser] = useState<Users[]>([]);
   const [error, setError] = useState<string>("");
   const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false);
   const [users, setUsers] = useState<Users[]>([]);
@@ -60,6 +71,11 @@ function App() {
   const [disableBtn, setDisableBtn] = useState<boolean>(false);
   const [userData, setUserData] = useState<Users[]>([]);
   const [savedData, setSavedData] = useState<Users[]>([]);
+  const [open, setOpen] = useState<boolean>(false);
+  const [drop, setDrop] = useState<boolean>(false);
+
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  console.log(isLoggedIn);
 
   return (
     <>
@@ -69,11 +85,13 @@ function App() {
           setUsername={setUsername}
           password={password}
           setPassword={setPassword}
-          setIsLoggedIn={setIsLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
           error={error}
           setError={setError}
           isPasswordShown={isPasswordShown}
           setIsPasswordShown={setIsPasswordShown}
+          loggedUser={loggedUser}
+          setLoggedUser={setLoggedUser}
         />
       ) : (
         <Router>
@@ -95,6 +113,11 @@ function App() {
               setUserData,
               savedData,
               setSavedData,
+              open,
+              setOpen,
+              drop,
+              setDrop,
+              // setIsLoggedIn,
             }}
           >
             <Routes>

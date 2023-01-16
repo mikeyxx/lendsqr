@@ -1,20 +1,64 @@
+import { useContext, useEffect, useRef } from "react";
 import filter from "../assets/filter.svg";
 import more from "../assets/more.svg";
 import { Link } from "react-router-dom";
 import { Users } from "./UserData";
+import view from "../assets/view.svg";
+import karma from "../assets/user-times.svg";
+import activate from "../assets/activate.svg";
+import "../styles/userDetailsdropdown.scss";
+import { DataContext } from "../App";
 
 interface Props {
   user: Users;
 }
 
 const SelectUserCount = ({ user }: Props) => {
+  const { open, setOpen, drop, setDrop } = useContext(DataContext);
+
+  let menuRef = useRef<HTMLDivElement>(null);
+  let filterRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    let handler = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+
+      document.addEventListener("mousedown", handler);
+
+      return () => {
+        document.removeEventListener("mousedown", handler);
+      };
+    };
+  }, [menuRef]);
+
+  useEffect(() => {
+    let handle = (e: MouseEvent) => {
+      if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
+        setDrop(false);
+      }
+
+      document.addEventListener("mousedown", handle);
+
+      return () => {
+        document.removeEventListener("mousedown", handle);
+      };
+    };
+  }, [filterRef]);
+
   return (
-    <div key={user.id} className="user-overview-wrapper">
+    <div
+      key={user.id}
+      className="user-overview-wrapper"
+      onClick={() => {
+        setDrop(!drop);
+      }}
+    >
       <div className="wrap">
         <div className="inner">
           <h4>Organization</h4>
-
-          <img src={filter} alt="" />
+          <img src={filter} alt="" ref={filterRef} />
         </div>
         <span>{user.orgName}</span>
       </div>
@@ -62,13 +106,53 @@ const SelectUserCount = ({ user }: Props) => {
         </div>
         <span>Inactive</span>
       </div>
-      <div className="dashDots">
-        <Link to={`/details/${user.id}`}>
+      <div className="dashDots" ref={menuRef}>
+        <div
+          className="menu-trigger"
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
           <img src={more} alt="" />
-        </Link>
+        </div>
+        <div className={`dropdown-menu ${open ? "active" : "inactive"}`}>
+          <ul className="drop-menu">
+            <li className="dropdownItem">
+              <img src={view} alt="" />
+              <Link to={`/details/${user.id}`}>
+                <span>View Details</span>
+              </Link>
+            </li>
+            <li className="dropdownItem">
+              <img src={karma} alt="" />
+
+              <span className="a">Blacklist User</span>
+            </li>
+            <li className="dropdownItem">
+              <img src={activate} alt="" />
+
+              <span className="a">Activate User</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
 };
+
+// interface Items {
+//   user: Users;
+//   img: string;
+//   text: string;
+// }
+
+// const DropdownItem = ({ user, img, text }: Items) => {
+//   return (
+//     <Link to={`/details/${user.id}`} className="dropdownItem">
+//       <img src={img} alt="" />
+//       <span>{text}</span>
+//     </Link>
+//   );
+// };
 
 export default SelectUserCount;
