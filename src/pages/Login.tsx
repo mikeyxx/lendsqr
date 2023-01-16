@@ -3,17 +3,20 @@ import "../styles/login.scss";
 import pablo from "../assets/pablo-sign-in.svg";
 import group from "../assets/Group.svg";
 import { access } from "../components/Credentials";
+import { Users } from "../components/UserData";
 
 interface Props {
   username: string;
   setUsername: React.Dispatch<React.SetStateAction<string>>;
   password: string;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  // setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   error: string;
   setError: React.Dispatch<React.SetStateAction<string>>;
   isPasswordShown: boolean;
   setIsPasswordShown: React.Dispatch<React.SetStateAction<boolean>>;
+  loggedUser: Users[];
+  setLoggedUser: React.Dispatch<React.SetStateAction<Users[]>>;
 }
 
 const Login = ({
@@ -21,17 +24,21 @@ const Login = ({
   setUsername,
   password,
   setPassword,
-  setIsLoggedIn,
+  // setIsLoggedIn,
   error,
   setError,
   isPasswordShown,
   setIsPasswordShown,
+  setLoggedUser,
 }: Props) => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await access(username, password);
-      setIsLoggedIn(true);
+      if (username && password) {
+        await access(username, password);
+        // setIsLoggedIn(true);
+        localStorage.setItem("isLoggedIn", "true");
+      }
     } catch (err) {
       setError("Incorrect username or password");
     }

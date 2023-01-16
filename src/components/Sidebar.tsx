@@ -33,6 +33,10 @@ import { DataContext } from "../App";
 
 const Sidebar = () => {
   const { menu } = useContext(DataContext);
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    location.reload();
+  };
   return (
     <div className="sidebarContainer">
       <div className={`sidebar-wrapper ${menu ? "toggle" : ""}`}>
@@ -146,7 +150,7 @@ const Sidebar = () => {
         </nav>
         <hr />
         <div className="logout-wrapper hide">
-          <div className="logout">
+          <div className="logout" onClick={handleLogout}>
             <img src={logout} alt="" />
             <span>Logout</span>
           </div>

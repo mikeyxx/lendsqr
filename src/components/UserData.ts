@@ -10,6 +10,7 @@ export interface Users {
     firstName: string;
     lastName: string;
     phoneNumber: string;
+    avatar: string;
     gender: string;
     bvn: string;
     address: string;
@@ -37,4 +38,7 @@ export interface Users {
     monthlyIncome: [];
     loanRepayment: string;
   };
+
+  password: string;
+  username: string;
 }
