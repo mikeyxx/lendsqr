@@ -39,3 +39,18 @@ body {
   margin-bottom: 31px;
   cursor: pointer;
 }
+
+.other-pages-container {
+  overflow-x: hidden;
+}
+
+.other-pages-wrapper {
+  overflow-x: hidden;
+}
+
+@media (min-width: 920px) {
+  .other-pages-wrapper {
+    display: flex;
+    gap: 60px;
+  }
+}

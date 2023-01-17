@@ -252,6 +252,14 @@
   }
 }
 
+.details-list {
+  cursor: pointer;
+}
+
+.details-list:hover {
+  color: base.$primary;
+}
+
 @media (min-width: 920px) {
   .details-menu {
     .details-menu-list {
@@ -261,7 +269,7 @@
       justify-content: space-between;
     }
 
-    .details-list:first-of-type {
+    .details-list.active-menu {
       border-bottom: 2px solid base.$primary;
     }
 

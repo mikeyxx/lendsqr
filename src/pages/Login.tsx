@@ -47,7 +47,9 @@ const Login = ({
   };
 
   const showPassword = () => {
-    setIsPasswordShown((prev) => !prev);
+    if (username && password) {
+      setIsPasswordShown((prev) => !prev);
+    }
   };
   return (
     <div className="wrapper">
@@ -82,7 +84,9 @@ const Login = ({
                 required
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <span onClick={showPassword}>Show</span>
+              <span onClick={showPassword}>
+                {isPasswordShown ? "Hide" : "Show"}
+              </span>
             </div>
 
             <span className="err">{error}</span>
