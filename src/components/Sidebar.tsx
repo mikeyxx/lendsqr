@@ -26,6 +26,7 @@ import logout from "../assets/sign-out.svg";
 import "../styles/sidebar.scss";
 import { useContext } from "react";
 import { DataContext } from "../App";
+import { Link } from "react-router-dom";
 
 // interface Props {
 //   menu: boolean;
@@ -52,104 +53,148 @@ const Sidebar = () => {
         <nav className="customerCategory cat">
           <h4>Customer</h4>
           <ul className="menu">
-            <li>
-              <img src={users} alt="" />
-              <span>Users</span>
+            <li className="list-menu on-menu">
+              <Link to="/">
+                <img src={users} alt="" />
+                <span>Users</span>
+              </Link>
             </li>
-            <li>
-              <img src={guarantor} alt="" />
-              <span>Guarantors</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={guarantor} alt="" />
+                <span>Guarantors</span>
+              </Link>
             </li>
-            <li>
-              <img src={moneybag} alt="" />
-              <span>Loans</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={moneybag} alt="" />
+                <span>Loans</span>
+              </Link>
             </li>
-            <li>
-              <img src={handshake} alt="" />
-              <span>Decision Models</span>
+
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={handshake} alt="" />
+                <span>Decision Models</span>
+              </Link>
             </li>
-            <li>
-              <img src={saving} alt="" />
-              <span>Savings</span>
+
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={saving} alt="" />
+                <span>Savings</span>
+              </Link>
             </li>
-            <li>
-              <img src={handbag} alt="" />
-              <span>Loan Requests</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={handbag} alt="" />
+                <span>Loan Requests</span>
+              </Link>
             </li>
-            <li>
-              <img src={userCheck} alt="" />
-              <span>Whitelist</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={userCheck} alt="" />
+                <span>Whitelist</span>
+              </Link>
             </li>
-            <li>
-              <img src={karma} alt="" />
-              <span>Karma</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={karma} alt="" />
+                <span>Karma</span>
+              </Link>
             </li>
           </ul>
         </nav>
         <nav className="businessContainer cat">
           <h4>Business</h4>
           <ul className="menu">
-            <li>
-              <img src={portfolioIcon} alt="" />
-              <span>Organization</span>
+            <li className="list-menu active">
+              <Link to="/nodata">
+                <img src={portfolioIcon} alt="" />
+                <span>Organization</span>
+              </Link>
             </li>
-            <li>
-              <img src={handbag} alt="" />
-              <span>Loan Products</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={handbag} alt="" />
+                <span>Loan Products</span>
+              </Link>
             </li>
-            <li>
-              <img src={bank} alt="" />
-              <span>Savings Products</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={bank} alt="" />
+                <span>Savings Products</span>
+              </Link>
             </li>
-            <li>
-              <img src={coins} alt="" />
-              <span>Fees and Charges</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={coins} alt="" />
+                <span>Fees and Charges</span>
+              </Link>
             </li>
-            <li>
-              <img src={transaction} alt="" />
-              <span>Transactions</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={transaction} alt="" />
+                <span>Transactions</span>
+              </Link>
             </li>
-            <li>
-              <img src={service} alt="" />
-              <span>Services</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={service} alt="" />
+                <span>Services</span>
+              </Link>
             </li>
-            <li>
-              <img src={serviceAcct} alt="" />
-              <span>Service Account</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={serviceAcct} alt="" />
+                <span>Service Account</span>
+              </Link>
             </li>
-            <li>
-              <img src={scroll} alt="" />
-              <span>Settlements</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={scroll} alt="" />
+                <span>Settlements</span>
+              </Link>
             </li>
-            <li>
-              <img src={report} alt="" />
-              <span>Reports</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={report} alt="" />
+                <span>Reports</span>
+              </Link>
             </li>
           </ul>
         </nav>
         <nav className="settings cat">
           <h4>Settings</h4>
           <ul className="menu">
-            <li>
-              <img src={slider} alt="" />
-              <span>Preferences</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={slider} alt="" />
+                <span>Preferences</span>
+              </Link>
             </li>
-            <li>
-              <img src={percent} alt="" />
-              <span>Fees and Pricing</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={percent} alt="" />
+                <span>Fees and Pricing</span>
+              </Link>
             </li>
-            <li>
-              <img src={clipboard} alt="" />
-              <span>Audit Logs</span>
+            <li className="list-menu">
+              <Link to="/nodata">
+                <img src={clipboard} alt="" />
+                <span>Audit Logs</span>
+              </Link>
             </li>
-            <li className="hide">
-              <img src={tire} alt="" />
-              <span>Systems Messages</span>
+            <li className="hide list-menu">
+              <Link to="/nodata">
+                <img src={tire} alt="" />
+                <span>Systems Messages</span>
+              </Link>
             </li>
           </ul>
         </nav>
         <hr />
-        <div className="logout-wrapper hide">
+        <div className="logout-wrapper hide list-menu">
           <div className="logout" onClick={handleLogout}>
             <img src={logout} alt="" />
             <span>Logout</span>

@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import UserDetails from "./pages/UserDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Users } from "./components/UserData";
+import OtherPages from "./pages/OtherPages";
 
 interface ApplicationContext {
   menu: boolean;
@@ -26,7 +27,8 @@ interface ApplicationContext {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   drop: boolean;
   setDrop: React.Dispatch<React.SetStateAction<boolean>>;
-  // setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  changePage: boolean;
+  setChangePage: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const contextDefaultValues: ApplicationContext = {
@@ -50,7 +52,8 @@ const contextDefaultValues: ApplicationContext = {
   setOpen: () => {},
   drop: false,
   setDrop: () => {},
-  // setIsLoggedIn: () => {},
+  changePage: false,
+  setChangePage: () => {},
 };
 
 export const DataContext =
@@ -58,7 +61,6 @@ export const DataContext =
 
 function App() {
   const [menu, setMenu] = useState<boolean>(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loggedUser, setLoggedUser] = useState<Users[]>([]);
@@ -73,9 +75,9 @@ function App() {
   const [savedData, setSavedData] = useState<Users[]>([]);
   const [open, setOpen] = useState<boolean>(false);
   const [drop, setDrop] = useState<boolean>(false);
+  const [changePage, setChangePage] = useState<boolean>(false);
 
   const isLoggedIn = localStorage.getItem("isLoggedIn");
-  console.log(isLoggedIn);
 
   return (
     <>
@@ -85,7 +87,6 @@ function App() {
           setUsername={setUsername}
           password={password}
           setPassword={setPassword}
-          // setIsLoggedIn={setIsLoggedIn}
           error={error}
           setError={setError}
           isPasswordShown={isPasswordShown}
@@ -117,12 +118,14 @@ function App() {
               setOpen,
               drop,
               setDrop,
-              // setIsLoggedIn,
+              changePage,
+              setChangePage,
             }}
           >
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/details/:id" element={<UserDetails />} />
+              <Route path="/nodata" element={<OtherPages />} />
             </Routes>
           </DataContext.Provider>
         </Router>

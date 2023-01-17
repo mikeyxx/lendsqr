@@ -5,7 +5,7 @@ import UserInformation from "../components/UserInformation";
 import { useParams } from "react-router-dom";
 
 const UserInfoParent = () => {
-  const { menu, userData, setUserData, savedData, setSavedData } =
+  const { userData, setUserData, savedData, setSavedData } =
     useContext(DataContext);
   const { id } = useParams();
 

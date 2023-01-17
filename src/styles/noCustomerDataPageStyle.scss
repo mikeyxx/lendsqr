@@ -1,0 +1,53 @@
+@use "base";
+
+.noDataPageContainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px 10px;
+  transition: all 0.3s;
+  overflow-x: hidden;
+}
+
+@media (min-width: 600px) {
+  .noDataPageContainer {
+    max-width: 760px;
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 920px) {
+  .noDataPageContainer {
+    max-width: 1037px;
+  }
+}
+
+.noDataPage-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin-top: -140px;
+  p {
+    font-size: 2rem;
+    color: base.$secondary;
+  }
+
+  .sad {
+    margin-top: 2rem;
+    font-size: 5rem;
+  }
+}
+
+@media (min-width: 920px) {
+  .noDataPage-wrapper {
+    p {
+      font-size: 3rem;
+    }
+
+    .sad {
+      margin-top: 2rem;
+      font-size: 5rem;
+    }
+  }
+}
