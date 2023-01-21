@@ -138,6 +138,21 @@
   }
 }
 
+.pageNum {
+  list-style: none;
+  display: flex;
+
+  li {
+    padding: 10px;
+    color: base.$secondary;
+    cursor: pointer;
+  }
+
+  .activePageNum {
+    color: base.$primary;
+  }
+}
+
 @media (min-width: 920px) {
   .user-overview {
     width: 100%;

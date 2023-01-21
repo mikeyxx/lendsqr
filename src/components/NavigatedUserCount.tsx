@@ -23,9 +23,7 @@ const NavigatedUserCount = ({ user }: Props) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setOpen(false);
       }
-
       document.addEventListener("mousedown", handler);
-
       return () => {
         document.removeEventListener("mousedown", handler);
       };
@@ -33,17 +31,15 @@ const NavigatedUserCount = ({ user }: Props) => {
   }, [menuRef]);
 
   useEffect(() => {
-    let handle = (e: MouseEvent) => {
-      if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
-        setDrop(false);
-      }
-
-      document.addEventListener("mousedown", handle);
-
-      return () => {
-        document.removeEventListener("mousedown", handle);
-      };
-    };
+    // let handle = (e: MouseEvent) => {
+    //   if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
+    //     setDrop(false);
+    //   }
+    //   document.addEventListener("mousedown", handle);
+    //   return () => {
+    //     document.removeEventListener("mousedown", handle);
+    //   };
+    // };
   }, [filterRef]);
 
   return (

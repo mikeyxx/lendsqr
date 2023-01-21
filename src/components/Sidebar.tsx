@@ -26,7 +26,7 @@ import logout from "../assets/sign-out.svg";
 import "../styles/sidebar.scss";
 import { useContext } from "react";
 import { DataContext } from "../App";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // interface Props {
 //   menu: boolean;
@@ -38,6 +38,7 @@ const Sidebar = () => {
     localStorage.removeItem("isLoggedIn");
     location.reload();
   };
+
   return (
     <div className="sidebarContainer">
       <div className={`sidebar-wrapper ${menu ? "toggle" : ""}`}>
@@ -53,144 +54,249 @@ const Sidebar = () => {
         <nav className="customerCategory cat">
           <h4>Customer</h4>
           <ul className="menu">
-            <li className="list-menu on-menu">
-              <Link to="/">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={users} alt="" />
                 <span>Users</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={guarantor} alt="" />
                 <span>Guarantors</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={moneybag} alt="" />
                 <span>Loans</span>
-              </Link>
-            </li>
+              </li>
+            </NavLink>
 
-            <li className="list-menu">
-              <Link to="/nodata">
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={handshake} alt="" />
                 <span>Decision Models</span>
-              </Link>
-            </li>
+              </li>
+            </NavLink>
 
-            <li className="list-menu">
-              <Link to="/nodata">
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={saving} alt="" />
                 <span>Savings</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={handbag} alt="" />
                 <span>Loan Requests</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={userCheck} alt="" />
                 <span>Whitelist</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={karma} alt="" />
                 <span>Karma</span>
-              </Link>
-            </li>
+              </li>
+            </NavLink>
           </ul>
         </nav>
         <nav className="businessContainer cat">
           <h4>Business</h4>
           <ul className="menu">
-            <li className="list-menu active">
-              <Link to="/nodata">
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu active">
                 <img src={portfolioIcon} alt="" />
                 <span>Organization</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={handbag} alt="" />
                 <span>Loan Products</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={bank} alt="" />
                 <span>Savings Products</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={coins} alt="" />
                 <span>Fees and Charges</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={transaction} alt="" />
                 <span>Transactions</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={service} alt="" />
                 <span>Services</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={serviceAcct} alt="" />
                 <span>Service Account</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={scroll} alt="" />
                 <span>Settlements</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={report} alt="" />
                 <span>Reports</span>
-              </Link>
-            </li>
+              </li>
+            </NavLink>
           </ul>
         </nav>
         <nav className="settings cat">
           <h4>Settings</h4>
           <ul className="menu">
-            <li className="list-menu">
-              <Link to="/nodata">
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={slider} alt="" />
                 <span>Preferences</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={percent} alt="" />
                 <span>Fees and Pricing</span>
-              </Link>
-            </li>
-            <li className="list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="list-menu">
                 <img src={clipboard} alt="" />
                 <span>Audit Logs</span>
-              </Link>
-            </li>
-            <li className="hide list-menu">
-              <Link to="/nodata">
+              </li>
+            </NavLink>
+            <NavLink
+              to="/nodata"
+              className={({ isActive }) =>
+                isActive ? "activeLink" : "normalLink"
+              }
+            >
+              <li className="hide list-menu">
                 <img src={tire} alt="" />
                 <span>Systems Messages</span>
-              </Link>
-            </li>
+              </li>
+            </NavLink>
           </ul>
         </nav>
         <hr />

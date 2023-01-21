@@ -269,7 +269,7 @@
       justify-content: space-between;
     }
 
-    .details-list.active-menu {
+    a:focus {
       border-bottom: 2px solid base.$primary;
     }
 

@@ -10,7 +10,6 @@ interface Props {
   setUsername: React.Dispatch<React.SetStateAction<string>>;
   password: string;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
-  // setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   error: string;
   setError: React.Dispatch<React.SetStateAction<string>>;
   isPasswordShown: boolean;
@@ -24,7 +23,6 @@ const Login = ({
   setUsername,
   password,
   setPassword,
-  // setIsLoggedIn,
   error,
   setError,
   isPasswordShown,
@@ -36,7 +34,6 @@ const Login = ({
     try {
       if (username && password) {
         await access(username, password);
-        // setIsLoggedIn(true);
         localStorage.setItem("isLoggedIn", "true");
       }
     } catch (err) {
