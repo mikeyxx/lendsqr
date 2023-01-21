@@ -80,26 +80,23 @@ const UserInformation = ({ saved }: Props) => {
               <option>App and System</option>
             </select>
             <ul className="details-menu-list">
-              <li
-                className="details-list active-menu"
-                onClick={() => setChangePage(false)}
-              >
-                General Details
+              <li className="details-list" onClick={() => setChangePage(false)}>
+                <a href="#">General Details</a>
               </li>
               <li className="details-list" onClick={handlePageChange}>
-                Documents
+                <a href="#">Documents</a>
               </li>
               <li className="details-list" onClick={handlePageChange}>
-                Bank Details
+                <a href="#">Bank Details</a>
               </li>
               <li className="details-list" onClick={handlePageChange}>
-                Loans
+                <a href="#">Loans</a>
               </li>
               <li className="details-list" onClick={handlePageChange}>
-                Savings
+                <a href="#">Savings</a>
               </li>
               <li className="details-list" onClick={handlePageChange}>
-                App and System
+                <a href="#">App and System</a>
               </li>
             </ul>
           </nav>

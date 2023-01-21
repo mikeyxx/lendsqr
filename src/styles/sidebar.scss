@@ -65,18 +65,22 @@
   }
 }
 
+.activeLink .list-menu {
+  background: rgba($color: base.$primary, $alpha: 0.06);
+  border-left: 4px solid base.$primary;
+}
+
+.normalLink .list-menu {
+  // background: rgba($color: base.$primary, $alpha: 0.06);
+  border-left: none;
+}
+
 .list-menu {
   padding-left: 29px;
-}
-
-.menu .on-menu {
-  background: rgba($color: base.$primary, $alpha: 0.06);
-  border-left: 4px solid base.$primary;
-}
-
-.menu li:hover {
-  background: rgba($color: base.$primary, $alpha: 0.06);
-  border-left: 4px solid base.$primary;
+  margin: 20px 0;
+  img {
+    padding-right: 10px;
+  }
 }
 
 .logout-wrapper {

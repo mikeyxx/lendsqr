@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import users_count from "../assets/user-icon.svg";
 import active_user from "../assets/active-users.svg";
 import { useContext } from "react";
@@ -24,13 +24,16 @@ const UserContent = () => {
     usersPerPage,
     setUsersPerPage,
     numberOfValues,
-    seNumberOfValues,
+    setNumberOfValues,
     disableBtn,
     setDisableBtn,
     drop,
   } = useContext(DataContext);
+  // const [pageNumberLimit, setpageNumberLimit] = useState(6)
+  // const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(6)
+  // const [minPageNumberLimit, setMinPageNumberLimit] = useState(0)
 
-  const currentNumOfUsers = parseInt(numberOfValues);
+  const currentNumOfUsers = Number(numberOfValues);
 
   const fetchUsers = async () => {
     try {
@@ -55,9 +58,29 @@ const UserContent = () => {
     fetchUsers();
   }, [currentPage, currentNumOfUsers]);
 
-  // const handlePageClick = (data: {}) => {
-  //   console.log(data.selected);
-  // };
+  const handlePageNumClick = (e: React.SyntheticEvent): void => {
+    let target = e.target as HTMLLIElement;
+    setCurrentPage(Number(target.id));
+  };
+
+  const pages = [];
+
+  for (let i = 1; i <= Math.ceil(users.length / usersPerPage); i++) {
+    pages.push(i);
+  }
+
+  const renderPageNumber = pages.map((number) => {
+    return (
+      <li
+        id={number}
+        key={number}
+        onClick={handlePageNumClick}
+        className={currentPage === number ? "activePageNum" : ""}
+      >
+        {number}
+      </li>
+    );
+  });
 
   return (
     <div className={`userContentContainer ${!menu ? "up" : ""} `}>
@@ -97,7 +120,7 @@ const UserContent = () => {
         <div className="drop-paginate">
           <div>
             <span>Showing</span>
-            <select onChange={(e) => seNumberOfValues(e.target.value)}>
+            <select onChange={(e) => setNumberOfValues(e.target.value)}>
               <option value={10}>10</option>
               <option value={20}>20</option>
               <option value={30}>30</option>
@@ -126,10 +149,7 @@ const UserContent = () => {
           >
             <img src={prev} alt="" />
           </button>
-
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
+          <ul className="pageNum">{renderPageNumber}</ul>
           <button
             disabled={disableBtn}
             onClick={() => {
@@ -141,14 +161,6 @@ const UserContent = () => {
           >
             <img src={next} alt="" />
           </button>
-          {/* <ReactPaginate
-            pageCount={10}
-            previousLabel={<img src={prev} alt="" />}
-            nextLabel={<img src={next} alt="" />}
-            breakLabel={"..."}
-            marginPagesDisplayed={3}
-            onPageChange={handlePageClick}
-          /> */}
         </div>
       </div>
       <div className="filter-dropdown">

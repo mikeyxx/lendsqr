@@ -16,7 +16,7 @@ interface ApplicationContext {
   usersPerPage: number;
   setUsersPerPage: React.Dispatch<React.SetStateAction<number>>;
   numberOfValues: string;
-  seNumberOfValues: React.Dispatch<React.SetStateAction<string>>;
+  setNumberOfValues: React.Dispatch<React.SetStateAction<string>>;
   disableBtn: boolean;
   setDisableBtn: React.Dispatch<React.SetStateAction<boolean>>;
   userData: Users[];
@@ -41,7 +41,7 @@ const contextDefaultValues: ApplicationContext = {
   usersPerPage: 10,
   setUsersPerPage: () => {},
   numberOfValues: "10",
-  seNumberOfValues: () => {},
+  setNumberOfValues: () => {},
   disableBtn: false,
   setDisableBtn: () => {},
   userData: [],
@@ -69,7 +69,7 @@ function App() {
   const [users, setUsers] = useState<Users[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [usersPerPage, setUsersPerPage] = useState<number>(10);
-  const [numberOfValues, seNumberOfValues] = useState<string>("10");
+  const [numberOfValues, setNumberOfValues] = useState<string>("10");
   const [disableBtn, setDisableBtn] = useState<boolean>(false);
   const [userData, setUserData] = useState<Users[]>([]);
   const [savedData, setSavedData] = useState<Users[]>([]);
@@ -107,7 +107,7 @@ function App() {
               usersPerPage,
               setUsersPerPage,
               numberOfValues,
-              seNumberOfValues,
+              setNumberOfValues,
               disableBtn,
               setDisableBtn,
               userData,

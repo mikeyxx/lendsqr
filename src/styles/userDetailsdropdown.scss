@@ -21,23 +21,23 @@ a {
   width: 180px;
 }
 
-.dropdown-menu .drop-menu a {
+.dropdown-menu .drop-menu {
   color: base.$secondary;
 }
 
-.dropdown-menu .drop-menu .a {
-  color: base.$secondary;
-}
+// .dropdown-menu .drop-menu .a {
+//   color: base.$secondary;
+// }
 
 .dropdown-menu .drop-menu a:hover {
   color: base.$blacklisted;
   cursor: pointer;
 }
 
-.dropdown-menu .drop-menu .a:hover {
-  color: base.$blacklisted;
-  cursor: pointer;
-}
+// .dropdown-menu .drop-menu .a:hover {
+//   color: base.$blacklisted;
+//   cursor: pointer;
+// }
 
 .dropdown-menu.active {
   opacity: 1;

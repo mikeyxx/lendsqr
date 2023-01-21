@@ -15,50 +15,32 @@ interface Props {
 
 const SelectUserCount = ({ user }: Props) => {
   const { open, setOpen, drop, setDrop } = useContext(DataContext);
+  let filterRef = useRef<NodeList | null>(null);
 
-  let menuRef = useRef<HTMLDivElement>(null);
-  let filterRef = useRef<HTMLImageElement>(null);
+  const handleUserDetailMenu = (e: React.SyntheticEvent): void => {
+    let target = e.target as HTMLImageElement;
+    if (target.id) {
+      console.log(target.id);
+      setOpen(!open);
+    }
+    // console.log(target.id === id);
+  };
 
-  useEffect(() => {
-    let handler = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
+  const doAnotherThing = () => {
+    setDrop(!drop);
+  };
 
-      document.addEventListener("mousedown", handler);
-
-      return () => {
-        document.removeEventListener("mousedown", handler);
-      };
-    };
-  }, [menuRef]);
-
-  useEffect(() => {
-    let handle = (e: MouseEvent) => {
-      if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
-        setDrop(false);
-      }
-
-      document.addEventListener("mousedown", handle);
-
-      return () => {
-        document.removeEventListener("mousedown", handle);
-      };
-    };
-  }, [filterRef]);
+  filterRef.current = document.querySelectorAll(".inner");
+  filterRef.current.forEach((filter) =>
+    filter.addEventListener("click", doAnotherThing)
+  );
 
   return (
-    <div
-      key={user.id}
-      className="user-overview-wrapper"
-      onClick={() => {
-        setDrop(!drop);
-      }}
-    >
+    <div key={user.id} className="user-overview-wrapper">
       <div className="wrap">
         <div className="inner">
           <h4>Organization</h4>
-          <img src={filter} alt="" ref={filterRef} />
+          <img src={filter} alt="" />
         </div>
         <span>{user.orgName}</span>
       </div>
@@ -106,14 +88,9 @@ const SelectUserCount = ({ user }: Props) => {
         </div>
         <span>Inactive</span>
       </div>
-      <div className="dashDots" ref={menuRef}>
-        <div
-          className="menu-trigger"
-          onClick={() => {
-            setOpen(!open);
-          }}
-        >
-          <img src={more} alt="" />
+      <div className="dashDots">
+        <div className="menu-trigger">
+          <img src={more} alt="" id={user.id} onClick={handleUserDetailMenu} />
         </div>
         <div className={`dropdown-menu ${open ? "active" : "inactive"}`}>
           <ul className="drop-menu">
@@ -126,12 +103,12 @@ const SelectUserCount = ({ user }: Props) => {
             <li className="dropdownItem">
               <img src={karma} alt="" />
 
-              <span className="a">Blacklist User</span>
+              <span>Blacklist User</span>
             </li>
             <li className="dropdownItem">
               <img src={activate} alt="" />
 
-              <span className="a">Activate User</span>
+              <span>Activate User</span>
             </li>
           </ul>
         </div>
