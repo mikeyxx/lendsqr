@@ -1,137 +1,136 @@
 import { useContext, useEffect, useRef } from "react";
 import filter from "../assets/filter.svg";
 import more from "../assets/more.svg";
-import { Link } from "react-router-dom";
 import { Users } from "./UserData";
 import view from "../assets/view.svg";
 import karma from "../assets/user-times.svg";
 import activate from "../assets/activate.svg";
-import { DataContext } from "../App";
+import UserModel from "./UserModel";
 
 interface Props {
-  user: Users;
+  users: Users[];
+  open: boolean;
+  handleUserMenu: (e: React.MouseEvent<Element, MouseEvent>) => void;
+  targetId: string;
+  leftPosition: number;
+  topPosition: number;
+  setDrop: React.Dispatch<React.SetStateAction<boolean>>;
+  setFilterTop: React.Dispatch<React.SetStateAction<number>>;
+  setFilterLeft: React.Dispatch<React.SetStateAction<number>>;
+  numberOfValues: string;
 }
 
-const NavigatedUserCount = ({ user }: Props) => {
-  const { open, setOpen, drop, setDrop } = useContext(DataContext);
-
-  let menuRef = useRef<HTMLDivElement>(null);
-  let filterRef = useRef<HTMLImageElement>(null);
+const NavigatedUserCount = ({
+  users,
+  open,
+  handleUserMenu,
+  targetId,
+  leftPosition,
+  topPosition,
+  setDrop,
+  setFilterTop,
+  setFilterLeft,
+  numberOfValues,
+}: Props) => {
+  const imgRef = useRef<NodeList | null>(null);
 
   useEffect(() => {
-    let handler = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-      document.addEventListener("mousedown", handler);
-      return () => {
-        document.removeEventListener("mousedown", handler);
-      };
+    setTimeout(() => {
+      imgRef.current = document.querySelectorAll(".filter") as NodeList;
+      imgRef.current?.forEach((img) =>
+        img.addEventListener("click", handleFilterIconPress)
+      );
+    }, 1500);
+
+    return () => {
+      imgRef.current?.forEach((img) =>
+        img.removeEventListener("click", handleFilterIconPress)
+      );
     };
-  }, [menuRef]);
+  }, [numberOfValues]);
 
-  useEffect(() => {
-    // let handle = (e: MouseEvent) => {
-    //   if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
-    //     setDrop(false);
-    //   }
-    //   document.addEventListener("mousedown", handle);
-    //   return () => {
-    //     document.removeEventListener("mousedown", handle);
-    //   };
-    // };
-  }, [filterRef]);
-
+  function handleFilterIconPress(e: any) {
+    setDrop(true);
+    setFilterLeft(e.pageX);
+    setFilterTop(e.pageY);
+  }
   return (
-    <div
-      key={user.id}
-      className="user-overview-wrapper"
-      onClick={() => {
-        setDrop(!drop);
-      }}
-    >
-      <div className="wrap">
-        <div className="inner">
-          <h4>Organization</h4>
-          <img src={filter} alt="" ref={filterRef} />
+    <>
+      {users.map((user) => (
+        <div key={user.id} className="user-overview-wrapper">
+          <div className="wrap">
+            <div className="inner">
+              <h4>Organization</h4>
+              <img src={filter} alt="" className="filter" />
+            </div>
+            <span>{user.orgName}</span>
+          </div>
+
+          <div className="wrap">
+            <div className="inner">
+              <h4>Username</h4>
+
+              <img src={filter} alt="" className="filter" />
+            </div>
+            <span>{user.userName}</span>
+          </div>
+
+          <div className="wrap">
+            <div className="inner">
+              <h4>Email</h4>
+
+              <img src={filter} alt="" className="filter" />
+            </div>
+            <span>{user.email}</span>
+          </div>
+
+          <div className="wrap">
+            <div className="inner">
+              <h4>Phone Number</h4>
+
+              <img src={filter} alt="" className="filter" />
+            </div>
+            <span>{user.phoneNumber}</span>
+          </div>
+
+          <div className="wrap">
+            <div className="inner">
+              <h4>Date Joined</h4>
+
+              <img src={filter} alt="" className="filter" />
+            </div>
+            <span>{user.createdAt}</span>
+          </div>
+          <div className="wrap">
+            <div className="inner">
+              <h4>Status</h4>
+
+              <img src={filter} alt="" className="filter" />
+            </div>
+            <span>Inactive</span>
+          </div>
+
+          <div className="menu-trigger">
+            <img
+              src={more}
+              alt=""
+              id={user.id}
+              onClick={(event) => handleUserMenu(event)}
+            />
+          </div>
         </div>
-        <span>{user.orgName}</span>
-      </div>
-
-      <div className="wrap">
-        <div className="inner">
-          <h4>Username</h4>
-
-          <img src={filter} alt="" />
-        </div>
-        <span>{user.userName}</span>
-      </div>
-
-      <div className="wrap">
-        <div className="inner">
-          <h4>Email</h4>
-
-          <img src={filter} alt="" />
-        </div>
-        <span>{user.email}</span>
-      </div>
-
-      <div className="wrap">
-        <div className="inner">
-          <h4>Phone Number</h4>
-
-          <img src={filter} alt="" />
-        </div>
-        <span>{user.phoneNumber}</span>
-      </div>
-
-      <div className="wrap">
-        <div className="inner">
-          <h4>Date Joined</h4>
-
-          <img src={filter} alt="" />
-        </div>
-        <span>{user.createdAt}</span>
-      </div>
-      <div className="wrap">
-        <div className="inner">
-          <h4>Status</h4>
-
-          <img src={filter} alt="" />
-        </div>
-        <span>Inactive</span>
-      </div>
-      <div className="dashDots" ref={menuRef}>
-        <div
-          className="menu-trigger"
-          onClick={() => {
-            setOpen(!open);
-          }}
-        >
-          <img src={more} alt="" />
-        </div>
-        <div className={`dropdown-menu ${open ? "active" : "inactive"}`}>
-          <ul className="drop-menu">
-            <li className="dropdownItem">
-              <img src={view} alt="" />
-              <Link to={`/details/${user.id}`}>
-                <span>View Details</span>
-              </Link>
-            </li>
-            <li className="dropdownItem">
-              <img src={karma} alt="" />
-
-              <span className="a">Blacklist User</span>
-            </li>
-            <li className="dropdownItem">
-              <img src={activate} alt="" />
-
-              <span className="a">Activate User</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      ))}
+      {open && (
+        <UserModel
+          targetId={targetId}
+          view={view}
+          karma={karma}
+          activate={activate}
+          topPosition={topPosition}
+          leftPosition={leftPosition}
+        />
+      )}
+    </>
   );
 };
 

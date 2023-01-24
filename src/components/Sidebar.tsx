@@ -66,7 +66,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
             <NavLink
-              to="/nodata"
+              to="/guarantor"
               className={({ isActive }) =>
                 isActive ? "activeLink" : "normalLink"
               }
@@ -77,7 +77,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
             <NavLink
-              to="/nodata"
+              to="/loans"
               className={({ isActive }) =>
                 isActive ? "activeLink" : "normalLink"
               }
@@ -89,7 +89,7 @@ const Sidebar = () => {
             </NavLink>
 
             <NavLink
-              to="/nodata"
+              to="/dModel"
               className={({ isActive }) =>
                 isActive ? "activeLink" : "normalLink"
               }
@@ -101,7 +101,7 @@ const Sidebar = () => {
             </NavLink>
 
             <NavLink
-              to="/nodata"
+              to="/savings"
               className={({ isActive }) =>
                 isActive ? "activeLink" : "normalLink"
               }
@@ -112,7 +112,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
             <NavLink
-              to="/nodata"
+              to="/lRequest"
               className={({ isActive }) =>
                 isActive ? "activeLink" : "normalLink"
               }
@@ -123,7 +123,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
             <NavLink
-              to="/nodata"
+              to="/whitelist"
               className={({ isActive }) =>
                 isActive ? "activeLink" : "normalLink"
               }
@@ -134,7 +134,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
             <NavLink
-              to="/nodata"
+              to="/karma"
               className={({ isActive }) =>
                 isActive ? "activeLink" : "normalLink"
               }
@@ -149,154 +149,74 @@ const Sidebar = () => {
         <nav className="businessContainer cat">
           <h4>Business</h4>
           <ul className="menu">
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu active">
-                <img src={portfolioIcon} alt="" />
-                <span>Organization</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={handbag} alt="" />
-                <span>Loan Products</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={bank} alt="" />
-                <span>Savings Products</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={coins} alt="" />
-                <span>Fees and Charges</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={transaction} alt="" />
-                <span>Transactions</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={service} alt="" />
-                <span>Services</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={serviceAcct} alt="" />
-                <span>Service Account</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={scroll} alt="" />
-                <span>Settlements</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={report} alt="" />
-                <span>Reports</span>
-              </li>
-            </NavLink>
+            <li className="list-menu active">
+              <img src={portfolioIcon} alt="" />
+              <span>Organization</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={handbag} alt="" />
+              <span>Loan Products</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={bank} alt="" />
+              <span>Savings Products</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={coins} alt="" />
+              <span>Fees and Charges</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={transaction} alt="" />
+              <span>Transactions</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={service} alt="" />
+              <span>Services</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={serviceAcct} alt="" />
+              <span>Service Account</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={scroll} alt="" />
+              <span>Settlements</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={report} alt="" />
+              <span>Reports</span>
+            </li>
           </ul>
         </nav>
         <nav className="settings cat">
           <h4>Settings</h4>
           <ul className="menu">
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={slider} alt="" />
-                <span>Preferences</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={percent} alt="" />
-                <span>Fees and Pricing</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="list-menu">
-                <img src={clipboard} alt="" />
-                <span>Audit Logs</span>
-              </li>
-            </NavLink>
-            <NavLink
-              to="/nodata"
-              className={({ isActive }) =>
-                isActive ? "activeLink" : "normalLink"
-              }
-            >
-              <li className="hide list-menu">
-                <img src={tire} alt="" />
-                <span>Systems Messages</span>
-              </li>
-            </NavLink>
+            <li className="list-menu">
+              <img src={slider} alt="" />
+              <span>Preferences</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={percent} alt="" />
+              <span>Fees and Pricing</span>
+            </li>
+
+            <li className="list-menu">
+              <img src={clipboard} alt="" />
+              <span>Audit Logs</span>
+            </li>
+
+            <li className="hide list-menu">
+              <img src={tire} alt="" />
+              <span>Systems Messages</span>
+            </li>
           </ul>
         </nav>
         <hr />

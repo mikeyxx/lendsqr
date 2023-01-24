@@ -1,11 +1,15 @@
 import "../styles/noCustomerDataPageStyle.scss";
 import { ImSad } from "react-icons/im";
 
-const NoCustomerDataComponent = () => {
+interface Props {
+  text: string;
+}
+
+const NoCustomerDataComponent = ({ text }: Props) => {
   return (
     <div className="noDataPageContainer">
       <div className="noDataPage-wrapper">
-        <p>Add Customer Data</p>
+        <p>{text}</p>
         <ImSad className="sad" />
       </div>
     </div>
