@@ -8,6 +8,8 @@
   border-radius: 4px;
   padding: 20px;
   z-index: 10;
+  transition: 500ms ease;
+
   .field {
     display: flex;
     flex-direction: column;
@@ -22,20 +24,6 @@
       padding: 12px 20px;
     }
   }
-}
-
-.filter-wrapper.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition: 500ms ease;
-}
-
-.filter-wrapper.inactive {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-20px);
-  transition: 500ms ease;
 }
 
 .label {

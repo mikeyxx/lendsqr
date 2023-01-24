@@ -25,6 +25,7 @@ const UserModel = ({
         position: "absolute",
         top: `${topPosition}px`,
         left: `${leftPosition - 170}px`,
+        transition: "500ms ease",
       }}
     >
       <ul className="drop-menu">

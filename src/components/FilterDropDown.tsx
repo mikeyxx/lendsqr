@@ -12,6 +12,7 @@ const FilterDropDown = ({ filterTop, filterLeft }: Props) => {
         position: "absolute",
         top: `${filterTop + 40}px`,
         left: `${filterLeft - 150}px`,
+        transition: "500ms ease",
       }}
     >
       <div className="filter-wrapper">
