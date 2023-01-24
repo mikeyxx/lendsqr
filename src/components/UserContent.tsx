@@ -73,7 +73,7 @@ const UserContent = () => {
   const renderPageNumber = pages.map((number) => {
     return (
       <li
-        id={number}
+        id={String(number)}
         key={number}
         onClick={handlePageNumClick}
         className={currentPage === number ? "activePageNum" : ""}
