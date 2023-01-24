@@ -11,27 +11,28 @@ import "../styles/content.scss";
 import { DataContext } from "../App";
 import SelectUserCount from "./SelectUserCount";
 import NavigatedUserCount from "./NavigatedUserCount";
-import ReactPaginate from "react-paginate";
+import FilterDropDown from "./FilterDropDown";
 
 const UserContent = () => {
   const {
     menu,
-    setMenu,
     users,
     setUsers,
     currentPage,
     setCurrentPage,
     usersPerPage,
-    setUsersPerPage,
     numberOfValues,
     setNumberOfValues,
     disableBtn,
-    setDisableBtn,
-    drop,
   } = useContext(DataContext);
-  // const [pageNumberLimit, setpageNumberLimit] = useState(6)
-  // const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(6)
-  // const [minPageNumberLimit, setMinPageNumberLimit] = useState(0)
+
+  const [open, setOpen] = useState<boolean>(false);
+  const [drop, setDrop] = useState<boolean>(false);
+  const [targetId, setTargetId] = useState("");
+  const [left, setLeft] = useState(0);
+  const [top, setTop] = useState(0);
+  const [filterTop, setFilterTop] = useState(0);
+  const [filterLeft, setFilterLeft] = useState(0);
 
   const currentNumOfUsers = Number(numberOfValues);
 
@@ -82,6 +83,14 @@ const UserContent = () => {
     );
   });
 
+  const handleUserMenu = (e: React.MouseEvent<Element, MouseEvent>): void => {
+    let target = e.target as HTMLImageElement;
+    setTargetId(target.id);
+    setLeft(e.pageX);
+    setTop(e.pageY);
+    setOpen(true);
+  };
+
   return (
     <div className={`userContentContainer ${!menu ? "up" : ""} `}>
       <h2>Users</h2>
@@ -108,13 +117,33 @@ const UserContent = () => {
         </div>
       </div>
       <div className="user-overview">
-        {currentNumOfUsers <= 10
-          ? currentUsers.map((user) => (
-              <SelectUserCount key={user.id} user={user} />
-            ))
-          : users.map((user) => (
-              <NavigatedUserCount key={user.id} user={user} />
-            ))}
+        {currentNumOfUsers <= 10 ? (
+          <SelectUserCount
+            open={open}
+            handleUserMenu={handleUserMenu}
+            currentUsers={currentUsers}
+            targetId={targetId}
+            leftPosition={left}
+            topPosition={top}
+            setDrop={setDrop}
+            setFilterTop={setFilterTop}
+            setFilterLeft={setFilterLeft}
+            currentPage={currentPage}
+          />
+        ) : (
+          <NavigatedUserCount
+            open={open}
+            handleUserMenu={handleUserMenu}
+            users={users}
+            targetId={targetId}
+            leftPosition={left}
+            topPosition={top}
+            setDrop={setDrop}
+            setFilterTop={setFilterTop}
+            setFilterLeft={setFilterLeft}
+            numberOfValues={numberOfValues}
+          />
+        )}
       </div>
       <div className="paginate">
         <div className="drop-paginate">
@@ -163,55 +192,7 @@ const UserContent = () => {
           </button>
         </div>
       </div>
-      <div className="filter-dropdown">
-        <div className={`filter-wrapper ${drop ? "active" : "inactive"}`}>
-          <div className="org field">
-            <label htmlFor="" className="label">
-              Organization
-            </label>
-            <select>
-              <option>Select</option>
-            </select>
-          </div>
-          <div className="username field">
-            <label htmlFor="" className="label">
-              Username
-            </label>
-            <input type="text" placeholder="User" />
-          </div>
-
-          <div className="email field">
-            <label htmlFor="" className="label">
-              Email
-            </label>
-            <input type="text" placeholder="Email" />
-          </div>
-          <div className="date field">
-            <label htmlFor="" className="label">
-              Date
-            </label>
-            <input type="date" placeholder="Date" />
-          </div>
-          <div className="phonenumber field">
-            <label htmlFor="" className="label">
-              Phone Number
-            </label>
-            <input type="text" placeholder="Phone Number" />
-          </div>
-          <div className="status field">
-            <label htmlFor="" className="label">
-              Status
-            </label>
-            <select>
-              <option>Select</option>
-            </select>
-          </div>
-          <div className="go">
-            <button className="reset-btn sub light">Reset</button>
-            <button className="filter-btn sub filled">Filter</button>
-          </div>
-        </div>
-      </div>
+      {drop && <FilterDropDown filterTop={filterTop} filterLeft={filterLeft} />}
     </div>
   );
 };

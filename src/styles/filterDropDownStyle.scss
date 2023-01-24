@@ -1,0 +1,75 @@
+@use "base";
+
+//form
+.filter-wrapper {
+  background: #ffffff;
+  border: 1px solid rgba(84, 95, 125, 0.14);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 20px;
+  z-index: 10;
+  .field {
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+
+    input,
+    select {
+      background: #ffffff;
+      opacity: 0.2;
+      border: 1px solid #213f7d;
+      border-radius: 8px;
+      padding: 12px 20px;
+    }
+  }
+}
+
+.filter-wrapper.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: 500ms ease;
+}
+
+.filter-wrapper.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: 500ms ease;
+}
+
+.label {
+  font-family: "Work Sans Medium";
+  font-size: 14px;
+  color: base.$tertiary;
+}
+
+// Button styles
+
+.reset-btn {
+  border: 1px solid base.$secondary;
+  border-radius: 8px;
+  font-family: "Work Sans SemiBold";
+  font-size: 14px;
+}
+
+.filter-btn {
+  background: base.$primary;
+  border: 1px solid base.$primary;
+  border-radius: 8px;
+  font-family: "Work Sans SemiBold";
+  font-size: 14px;
+  color: #fff;
+}
+
+.sub {
+  border: 1px solid #545f7d;
+  border-radius: 8px;
+  padding: 12px 30px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.reset-btn {
+  margin-right: 14px;
+}

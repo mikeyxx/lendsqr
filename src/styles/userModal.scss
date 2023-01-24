@@ -1,0 +1,36 @@
+@use "base";
+
+.drop-menu {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu-trigger {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: 180px;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu .drop-menu {
+  color: base.$secondary;
+}
+
+.dropdownItem img {
+  margin-right: 10px;
+  opacity: 0.5;
+  transition: 500ms;
+}
+
+.dropdownItem span {
+  margin-left: 10px;
+  transition: 500ms;
+}

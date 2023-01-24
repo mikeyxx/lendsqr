@@ -4,7 +4,13 @@ import Login from "./pages/Login";
 import UserDetails from "./pages/UserDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Users } from "./components/UserData";
-import OtherPages from "./pages/OtherPages";
+import GuarantorInfo from "./pages/otherPages/GuarantorInfo";
+import Loans from "./pages/otherPages/Loans";
+import DModelInfo from "./pages/otherPages/DModelInfo";
+import Savings from "./pages/otherPages/Savings";
+import LoanRequest from "./pages/otherPages/LoanRequestInfo";
+import WhiteList from "./pages/otherPages/WhiteListInfo";
+import Karma from "./pages/otherPages/KarmaInfo";
 
 interface ApplicationContext {
   menu: boolean;
@@ -23,10 +29,6 @@ interface ApplicationContext {
   setUserData: React.Dispatch<React.SetStateAction<Users[]>>;
   savedData: Users[];
   setSavedData: React.Dispatch<React.SetStateAction<Users[]>>;
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  drop: boolean;
-  setDrop: React.Dispatch<React.SetStateAction<boolean>>;
   changePage: boolean;
   setChangePage: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -48,10 +50,6 @@ const contextDefaultValues: ApplicationContext = {
   setUserData: () => {},
   savedData: [],
   setSavedData: () => {},
-  open: false,
-  setOpen: () => {},
-  drop: false,
-  setDrop: () => {},
   changePage: false,
   setChangePage: () => {},
 };
@@ -73,8 +71,6 @@ function App() {
   const [disableBtn, setDisableBtn] = useState<boolean>(false);
   const [userData, setUserData] = useState<Users[]>([]);
   const [savedData, setSavedData] = useState<Users[]>([]);
-  const [open, setOpen] = useState<boolean>(false);
-  const [drop, setDrop] = useState<boolean>(false);
   const [changePage, setChangePage] = useState<boolean>(false);
 
   const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -114,10 +110,6 @@ function App() {
               setUserData,
               savedData,
               setSavedData,
-              open,
-              setOpen,
-              drop,
-              setDrop,
               changePage,
               setChangePage,
             }}
@@ -125,7 +117,13 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/details/:id" element={<UserDetails />} />
-              <Route path="/nodata" element={<OtherPages />} />
+              <Route path="/guarantor" element={<GuarantorInfo />} />
+              <Route path="/loans" element={<Loans />} />
+              <Route path="/dModel" element={<DModelInfo />} />
+              <Route path="/savings" element={<Savings />} />
+              <Route path="/lRequest" element={<LoanRequest />} />
+              <Route path="/whitelist" element={<WhiteList />} />
+              <Route path="/karma" element={<Karma />} />
             </Routes>
           </DataContext.Provider>
         </Router>
