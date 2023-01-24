@@ -40,7 +40,7 @@ const SelectUserCount = ({
       imgRef.current?.forEach((img) =>
         img.addEventListener("click", handleFilterIconPress)
       );
-    }, 1500);
+    }, 2500);
 
     return () => {
       imgRef.current?.forEach((img) =>
