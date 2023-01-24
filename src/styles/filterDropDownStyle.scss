@@ -61,3 +61,9 @@
 .reset-btn {
   margin-right: 14px;
 }
+
+@media (max-width: 630px) {
+  .filter-wrapper {
+    display: none;
+  }
+}

@@ -54,3 +54,7 @@ body {
     gap: 60px;
   }
 }
+
+li {
+  list-style: none;
+}
