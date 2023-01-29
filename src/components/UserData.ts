@@ -41,4 +41,5 @@ export interface Users {
 
   password: string;
   username: string;
+  stat: ["Active", "Inactive"];
 }

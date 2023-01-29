@@ -54,6 +54,20 @@ const NavigatedUserCount = ({
     setFilterLeft(e.pageX);
     setFilterTop(e.pageY);
   }
+
+  function getDate(data: string) {
+    const res = data.split("T");
+    return res[0];
+  }
+
+  function checkDate(data: string) {
+    const currentDate = Number(new Date().getFullYear());
+    const res = data.split("T");
+    const a = res[0];
+    const dateCreated = Number(new Date(a).getFullYear());
+    return currentDate - dateCreated > 3 ? "Inactive" : "Active";
+  }
+
   return (
     <>
       {users.map((user) => (
@@ -99,7 +113,7 @@ const NavigatedUserCount = ({
 
               <img src={filter} alt="" className="filter" />
             </div>
-            <span>{user.createdAt}</span>
+            <span>{getDate(user.createdAt)}</span>
           </div>
           <div className="wrap">
             <div className="inner">
@@ -107,7 +121,20 @@ const NavigatedUserCount = ({
 
               <img src={filter} alt="" className="filter" />
             </div>
-            <span>Inactive</span>
+            <span
+              style={{
+                backgroundColor:
+                  checkDate(user.createdAt) === "Inactive"
+                    ? `#ffcccc`
+                    : "#e6fff2",
+                color:
+                  checkDate(user.createdAt) === "Inactive" ? `red` : "green",
+                borderRadius: "5px",
+                padding: "2px 5px",
+              }}
+            >
+              {checkDate(user.createdAt)}
+            </span>
           </div>
 
           <div className="menu-trigger">

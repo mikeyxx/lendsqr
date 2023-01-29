@@ -34,6 +34,25 @@ const SelectUserCount = ({
 }: Props) => {
   const imgRef = useRef<NodeList | null>(null);
 
+  // for (let i = 0; i < currentUsers.length; i++) {
+  //   if (i === 0) {
+  //     console.log(currentUsers[i].createdAt.split("T"));
+  //   }
+  // }
+
+  function getDate(data: string) {
+    const res = data.split("T");
+    return res[0];
+  }
+
+  function checkDate(data: string) {
+    const currentDate = Number(new Date().getFullYear());
+    const res = data.split("T");
+    const a = res[0];
+    const dateCreated = Number(new Date(a).getFullYear());
+    return currentDate - dateCreated > 3 ? "Inactive" : "Active";
+  }
+
   useEffect(() => {
     setTimeout(() => {
       imgRef.current = document.querySelectorAll(".filter") as NodeList;
@@ -100,7 +119,7 @@ const SelectUserCount = ({
 
               <img src={filter} alt="" className="filter" />
             </div>
-            <span>{user.createdAt}</span>
+            <span>{getDate(user.createdAt)}</span>
           </div>
           <div className="wrap">
             <div className="inner">
@@ -108,7 +127,20 @@ const SelectUserCount = ({
 
               <img src={filter} alt="" className="filter" />
             </div>
-            <span>Inactive</span>
+            <span
+              style={{
+                backgroundColor:
+                  checkDate(user.createdAt) === "Inactive"
+                    ? `#ffcccc`
+                    : "#e6fff2",
+                color:
+                  checkDate(user.createdAt) === "Inactive" ? `red` : "green",
+                borderRadius: "5px",
+                padding: "2px 5px",
+              }}
+            >
+              {checkDate(user.createdAt)}
+            </span>
           </div>
           <div className="dashDots">
             <div className="menu-trigger">
