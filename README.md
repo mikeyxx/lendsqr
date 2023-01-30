@@ -2,7 +2,7 @@
 lendsqr frontend test
 
 ## Overview
-This application is a replica of the users dashboard on Lendsqr, the Lending-as-a-Service solution that powers lenders
+ A Lending-as-a-Service solution dashboard that powers lenders
 
 ## Features
 Built with React Vite using TypeScript, the application has a user login page, a user dashboard which shows an overview of all user information managed on the app. It has a filter page that takes the user to the customer details page.
